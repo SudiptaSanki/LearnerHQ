@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Wellness Check - LearnerHQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body class="bg-slate-950 text-white font-inter min-h-screen">
+    <nav class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+            <a href="../index.html" class="flex items-center gap-2">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                </div>
+                <span
+                    class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">LearnerHQ</span>
+            </a>
+            <a href="../index.html" class="text-slate-400 hover:text-white">← Back</a>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 px-6">
+        <div class="max-w-3xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <div
+                    class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                </div>
+                <h1
+                    class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+                    Student Wellness Check</h1>
+                <p class="text-slate-400 mt-2">A quick self-assessment to understand how you're feeling</p>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="glass-card p-4 rounded-xl border border-yellow-500/30 bg-yellow-500/5 mb-8">
+                <p class="text-sm text-yellow-200">
+                    ⚠️ <strong>Disclaimer:</strong> This is NOT a medical diagnosis. It's a general wellness indicator.
+                    If you're struggling, please reach out to a mental health professional or helpline.
+                </p>
+            </div>
+
+            <!-- Assessment Form -->
+            <div id="assessmentSection" class="glass-card p-8 rounded-2xl">
+                <h2 class="text-xl font-bold mb-6">Over the past 2 weeks, how often have you experienced the following?
+                </h2>
+
+                <form id="wellnessForm" class="space-y-6">
+                    <!-- Questions -->
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">1. Feeling nervous, anxious, or on edge?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="1">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">2. Not being able to stop or control worrying?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="2">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">3. Trouble falling or staying asleep?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="3">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">4. Feeling tired or having little energy?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="4">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">5. Difficulty concentrating on studies or tasks?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="5">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">6. Feeling down, depressed, or hopeless?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="6">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">7. Little interest or pleasure in doing things?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="7">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">8. Feeling overwhelmed by academic pressure?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="8">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">9. Feeling isolated or lacking social support?</label>
+                        <div class="grid grid-cols-4 gap-2" data-question="9">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Not at all</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Several days</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">More than half</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Nearly every day</button>
+                        </div>
+                    </div>
+
+                    <div class="question-item">
+                        <label class="block mb-3 font-medium">10. How would you rate your overall well-being?</label>
+                        <div class="grid grid-cols-5 gap-2" data-question="10">
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="4">Excellent</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="3">Good</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="2">Fair</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="1">Poor</button>
+                            <button type="button"
+                                class="answer-btn px-3 py-2 bg-slate-800 hover:bg-emerald-600 rounded-lg text-sm transition"
+                                data-value="0">Very Poor</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn"
+                        class="w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl font-semibold shadow-lg transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled>
+                        Get My Wellness Insights
+                    </button>
+                    <p id="progressText" class="text-center text-sm text-slate-400">Answer all 10 questions to continue
+                    </p>
+                </form>
+            </div>
+
+            <!-- Results Section (Hidden Initially) -->
+            <div id="resultsSection" class="hidden">
+                <div class="glass-card p-8 rounded-2xl mb-6">
+                    <h2 class="text-2xl font-bold mb-4 text-center">Your Wellness Results</h2>
+
+                    <div id="scoreDisplay" class="text-center mb-6">
+                        <!-- Score will be inserted here -->
+                    </div>
+
+                    <div id="aiInsights" class="mb-6">
+                        <h3 class="font-semibold mb-3">🤖 AI-Powered Insights</h3>
+                        <div id="aiContent" class="text-sm text-slate-300 p-4 bg-slate-800/50 rounded-lg">
+                            <div class="flex gap-2 items-center">
+                                <div class="loading-spinner"></div>
+                                <span>Generating personalized recommendations...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Find Nearby Mental Health Professionals -->
+                <div
+                    class="glass-card p-6 rounded-2xl mb-6 border border-cyan-500/30 bg-gradient-to-br from-cyan-900/10 to-blue-900/10">
+                    <h3 class="font-bold mb-4 flex items-center gap-2 text-cyan-300">
+                        <span>📍</span> Find Mental Health Professionals Near You
+                    </h3>
+
+                    <!-- Location Status -->
+                    <div id="locationStatus" class="mb-4 p-3 bg-slate-800/50 rounded-lg text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="loading-spinner-small"></div>
+                            <span id="locationText">Checking location access...</span>
+                        </div>
+                    </div>
+
+                    <!-- Location-based Search Button -->
+                    <div id="searchButtonContainer" class="mb-4">
+                        <button id="findDoctorsBtn" onclick="searchNearbyDoctors()"
+                            class="w-full px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold shadow-lg hover:shadow-cyan-500/30 transition transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <span>🔍 Find Psychiatrists & Psychologists Near Me</span>
+                        </button>
+                        <p class="text-xs text-slate-500 mt-2 text-center">Opens Google Search with your location</p>
+                    </div>
+
+                    <!-- Manual City Search -->
+                    <div class="mt-4 p-4 bg-slate-800/30 rounded-lg">
+                        <p class="text-sm text-slate-400 mb-2">Or search by city:</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <button onclick="searchDoctorsByCity('Mumbai')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Mumbai</button>
+                            <button onclick="searchDoctorsByCity('Delhi')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Delhi</button>
+                            <button onclick="searchDoctorsByCity('Bangalore')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Bangalore</button>
+                            <button onclick="searchDoctorsByCity('Chennai')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Chennai</button>
+                            <button onclick="searchDoctorsByCity('Hyderabad')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Hyderabad</button>
+                            <button onclick="searchDoctorsByCity('Kolkata')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Kolkata</button>
+                            <button onclick="searchDoctorsByCity('Pune')"
+                                class="px-3 py-1.5 bg-slate-700 hover:bg-cyan-600 rounded-lg text-xs transition">Pune</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Mental Health Doctors in India -->
+                <div
+                    class="glass-card p-6 rounded-2xl mb-6 border border-purple-500/30 bg-gradient-to-br from-purple-900/10 to-pink-900/10">
+                    <h3 class="font-bold mb-4 flex items-center gap-2 text-purple-300">
+                        <span>🏥</span> Top Mental Health Specialists in India
+                    </h3>
+                    <div class="grid gap-3 text-sm">
+                        <div class="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <strong class="text-white">Dr. Shyam Bhat</strong>
+                                    <p class="text-slate-400 text-xs">Psychiatrist - Bangalore</p>
+                                    <p class="text-cyan-400 text-xs">Mindful Living, Integrative Psychiatry</p>
+                                </div>
+                                <a href="https://www.google.com/search?q=Dr+Shyam+Bhat+Psychiatrist+Bangalore"
+                                    target="_blank" class="text-cyan-400 hover:text-cyan-300 text-xs">View →</a>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <strong class="text-white">Dr. Samir Parikh</strong>
+                                    <p class="text-slate-400 text-xs">Psychiatrist - Delhi (Fortis)</p>
+                                    <p class="text-cyan-400 text-xs">Youth Mental Health Expert</p>
+                                </div>
+                                <a href="https://www.google.com/search?q=Dr+Samir+Parikh+Fortis+Psychiatrist+Delhi"
+                                    target="_blank" class="text-cyan-400 hover:text-cyan-300 text-xs">View →</a>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <strong class="text-white">Dr. Harish Shetty</strong>
+                                    <p class="text-slate-400 text-xs">Psychiatrist - Mumbai</p>
+                                    <p class="text-cyan-400 text-xs">30+ Years Experience, Child & Adolescent</p>
+                                </div>
+                                <a href="https://www.google.com/search?q=Dr+Harish+Shetty+Psychiatrist+Mumbai"
+                                    target="_blank" class="text-cyan-400 hover:text-cyan-300 text-xs">View →</a>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <strong class="text-white">Dr. Ennapadam S Krishnamoorthy</strong>
+                                    <p class="text-slate-400 text-xs">Neuropsychiatrist - Chennai</p>
+                                    <p class="text-cyan-400 text-xs">Brain & Behavior Expert</p>
+                                </div>
+                                <a href="https://www.google.com/search?q=Dr+Ennapadam+Krishnamoorthy+Neuropsychiatrist+Chennai"
+                                    target="_blank" class="text-cyan-400 hover:text-cyan-300 text-xs">View →</a>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <strong class="text-white">Dr. Achal Bhagat</strong>
+                                    <p class="text-slate-400 text-xs">Psychiatrist - Delhi</p>
+                                    <p class="text-cyan-400 text-xs">Psychotherapy & Stress Management</p>
+                                </div>
+                                <a href="https://www.google.com/search?q=Dr+Achal+Bhagat+Psychiatrist+Delhi"
+                                    target="_blank" class="text-cyan-400 hover:text-cyan-300 text-xs">View →</a>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <strong class="text-white">Dr. Prabha Chandra</strong>
+                                    <p class="text-slate-400 text-xs">Psychiatrist - NIMHANS, Bangalore</p>
+                                    <p class="text-cyan-400 text-xs">Women's Mental Health</p>
+                                </div>
+                                <a href="https://www.google.com/search?q=Dr+Prabha+Chandra+NIMHANS+Bangalore"
+                                    target="_blank" class="text-cyan-400 hover:text-cyan-300 text-xs">View →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4">💡 Tip: Many doctors offer online consultations too!</p>
+                </div>
+
+                <!-- Resources & Helplines -->
+                <div class="glass-card p-6 rounded-2xl mb-6">
+                    <h3 class="font-bold mb-4">📞 24/7 Helpline Resources (India)</h3>
+                    <div class="space-y-3 text-sm">
+                        <a href="tel:9152987821"
+                            class="block p-3 bg-slate-800 hover:bg-emerald-900/50 rounded-lg transition border border-transparent hover:border-emerald-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🧠</span>
+                                <div>
+                                    <strong>iCall</strong> - 9152987821
+                                    <p class="text-slate-400 text-xs">Mon-Sat, 8am-10pm | Trained counselors</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="tel:18002333330"
+                            class="block p-3 bg-slate-800 hover:bg-emerald-900/50 rounded-lg transition border border-transparent hover:border-emerald-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">❤️</span>
+                                <div>
+                                    <strong>Vandrevala Foundation</strong> - 1800-2333-330
+                                    <p class="text-slate-400 text-xs">24/7 Free | Multi-language support</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="tel:08046110007"
+                            class="block p-3 bg-slate-800 hover:bg-emerald-900/50 rounded-lg transition border border-transparent hover:border-emerald-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🏥</span>
+                                <div>
+                                    <strong>NIMHANS</strong> - 080-46110007
+                                    <p class="text-slate-400 text-xs">Premier mental health institute</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="tel:9820466726"
+                            class="block p-3 bg-slate-800 hover:bg-emerald-900/50 rounded-lg transition border border-transparent hover:border-emerald-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🆘</span>
+                                <div>
+                                    <strong>Connecting Trust</strong> - 9820466726
+                                    <p class="text-slate-400 text-xs">Crisis intervention & emotional support</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="tel:18005990019"
+                            class="block p-3 bg-slate-800 hover:bg-emerald-900/50 rounded-lg transition border border-transparent hover:border-emerald-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🎓</span>
+                                <div>
+                                    <strong>KIRAN (Govt)</strong> - 1800-599-0019
+                                    <p class="text-slate-400 text-xs">24/7 Free | Ministry of Health initiative</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4 text-center">Remember: Seeking help is a sign of strength, not
+                        weakness. 💚</p>
+                </div>
+
+                <!-- Advanced Assessments Section -->
+                <div
+                    class="glass-card p-6 rounded-2xl mb-6 border border-amber-500/30 bg-gradient-to-br from-amber-900/10 to-orange-900/10">
+                    <h3 class="font-bold mb-4 flex items-center gap-2 text-amber-300">
+                        <span>📋</span> Take Advanced Assessments
+                    </h3>
+                    <p class="text-sm text-slate-400 mb-4">For more detailed insights, try these clinically-validated
+                        screening tools:</p>
+                    <div class="grid gap-3 text-sm">
+                        <a href="https://www.mdcalc.com/calc/1725/phq-9-patient-health-questionnaire-9" target="_blank"
+                            class="block p-4 bg-slate-800/50 hover:bg-slate-800 rounded-lg transition border border-transparent hover:border-amber-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📝</span>
+                                <div>
+                                    <strong class="text-white">PHQ-9 Depression Screening</strong>
+                                    <p class="text-slate-400 text-xs">9-question clinical depression assessment</p>
+                                </div>
+                                <span class="ml-auto text-amber-400">→</span>
+                            </div>
+                        </a>
+                        <a href="https://www.mdcalc.com/calc/1727/gad-7-generalized-anxiety-disorder" target="_blank"
+                            class="block p-4 bg-slate-800/50 hover:bg-slate-800 rounded-lg transition border border-transparent hover:border-amber-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">😰</span>
+                                <div>
+                                    <strong class="text-white">GAD-7 Anxiety Assessment</strong>
+                                    <p class="text-slate-400 text-xs">Generalized anxiety disorder screening</p>
+                                </div>
+                                <span class="ml-auto text-amber-400">→</span>
+                            </div>
+                        </a>
+                        <a href="https://psychology-tools.com/test/perceived-stress-scale" target="_blank"
+                            class="block p-4 bg-slate-800/50 hover:bg-slate-800 rounded-lg transition border border-transparent hover:border-amber-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">😓</span>
+                                <div>
+                                    <strong class="text-white">Perceived Stress Scale (PSS)</strong>
+                                    <p class="text-slate-400 text-xs">Measure your stress perception levels</p>
+                                </div>
+                                <span class="ml-auto text-amber-400">→</span>
+                            </div>
+                        </a>
+                        <a href="https://www.psytoolkit.org/survey-library/burnout-maslach.html" target="_blank"
+                            class="block p-4 bg-slate-800/50 hover:bg-slate-800 rounded-lg transition border border-transparent hover:border-amber-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🔥</span>
+                                <div>
+                                    <strong class="text-white">Burnout Assessment (MBI)</strong>
+                                    <p class="text-slate-400 text-xs">Academic/work burnout screening</p>
+                                </div>
+                                <span class="ml-auto text-amber-400">→</span>
+                            </div>
+                        </a>
+                        <a href="https://psychology-tools.com/test/insomnia-severity-index" target="_blank"
+                            class="block p-4 bg-slate-800/50 hover:bg-slate-800 rounded-lg transition border border-transparent hover:border-amber-500/30">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">😴</span>
+                                <div>
+                                    <strong class="text-white">Insomnia Severity Index</strong>
+                                    <p class="text-slate-400 text-xs">Sleep quality assessment</p>
+                                </div>
+                                <span class="ml-auto text-amber-400">→</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4">⚠️ These are screening tools only. Always consult a
+                        professional for diagnosis.</p>
+                </div>
+
+                <button onclick="location.reload()"
+                    class="w-full mt-6 px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl transition">
+                    Take Assessment Again
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/apiManager.js"></script>
+    <script>
+        const answers = {};
+        let answeredCount = 0;
+
+        // Handle answer selection
+        document.querySelectorAll('.answer-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const parent = this.parentElement;
+                const question = parent.dataset.question;
+                const value = parseInt(this.dataset.value);
+
+                // Remove active from siblings
+                parent.querySelectorAll('.answer-btn').forEach(b => {
+                    b.classList.remove('bg-emerald-600');
+                    b.classList.add('bg-slate-800');
+                });
+
+                // Add active to this
+                this.classList.remove('bg-slate-800');
+                this.classList.add('bg-emerald-600');
+
+                // Track answers - only increment count for NEW questions (use hasOwnProperty to handle 0 values)
+                if (!answers.hasOwnProperty(question)) {
+                    answeredCount++;
+                }
+                answers[question] = value;
+
+                // Update progress (cap at 10)
+                const displayCount = Math.min(answeredCount, 10);
+                document.getElementById('progressText').textContent = `${displayCount}/10 questions answered`;
+
+                // Enable submit if all answered
+                if (answeredCount >= 10) {
+                    document.getElementById('submitBtn').disabled = false;
+                }
+            });
+        });
+
+        // Handle form submit
+        document.getElementById('wellnessForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Calculate score (lower is better for Q1-9, higher for Q10)
+            let stressScore = 0;
+            for (let i = 1; i <= 9; i++) {
+                stressScore += answers[i] || 0;
+            }
+            const wellbeingScore = answers[10] || 0;
+
+            // Combined score (0-31 scale)
+            const totalScore = stressScore + (4 - wellbeingScore);
+
+            // Determine level
+            let level, color, message;
+            if (totalScore <= 8) {
+                level = 'Low Stress';
+                color = 'text-green-400';
+                message = "You're doing well! Keep maintaining healthy habits.";
+            } else if (totalScore <= 16) {
+                level = 'Moderate Stress';
+                color = 'text-yellow-400';
+                message = "You're experiencing some stress. Consider self-care strategies.";
+            } else if (totalScore <= 24) {
+                level = 'High Stress';
+                color = 'text-orange-400';
+                message = "You may benefit from speaking to a counselor or trusted person.";
+            } else {
+                level = 'Severe Stress';
+                color = 'text-red-400';
+                message = "Please consider reaching out to a mental health professional.";
+            }
+
+            // Show results
+            document.getElementById('assessmentSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+
+            document.getElementById('scoreDisplay').innerHTML = `
+                <div class="text-6xl font-bold ${color} mb-2">${level}</div>
+                <p class="text-slate-400">${message}</p>
+                <div class="mt-4 h-4 bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-green-500 via-yellow-500 to-red-500" style="width: ${Math.min(100, (totalScore / 31) * 100)}%"></div>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">Score: ${totalScore}/31</p>
+            `;
+
+            // Get AI insights
+            try {
+                const prompt = `As a supportive wellness advisor (NOT a doctor), provide brief, actionable self-care tips for a student showing ${level.toLowerCase()} levels. Their main concerns are: anxiety (${answers[1]}/3), sleep issues (${answers[3]}/3), fatigue (${answers[4]}/3), academic pressure (${answers[8]}/3). Give 3-4 practical, encouraging tips in bullet points. Keep it warm and supportive. Do NOT diagnose or prescribe medication.`;
+
+                const result = await APIManager.callGemini(prompt);
+
+                if (result.success) {
+                    document.getElementById('aiContent').innerHTML = result.text.replace(/\n/g, '<br>').replace(/\*/g, '•');
+                } else {
+                    document.getElementById('aiContent').innerHTML = getDefaultTips(level);
+                }
+            } catch (error) {
+                document.getElementById('aiContent').innerHTML = getDefaultTips(level);
+            }
+        });
+
+        function getDefaultTips(level) {
+            const tips = {
+                'Low Stress': '• Keep up your great habits!<br>• Continue regular exercise and sleep schedule<br>• Maintain social connections<br>• Practice mindfulness occasionally',
+                'Moderate Stress': '• Try 10 minutes of daily meditation<br>• Take regular breaks during study sessions<br>• Talk to friends or family about your feelings<br>• Consider journaling your thoughts',
+                'High Stress': '• Speak to a school counselor or trusted adult<br>• Practice deep breathing exercises<br>• Reduce academic workload if possible<br>• Prioritize sleep and nutrition',
+                'Severe Stress': '• Please reach out to a mental health professional<br>• Call a helpline if you need immediate support<br>• Talk to someone you trust today<br>• Remember: This is temporary and help is available'
+            };
+            return tips[level] || tips['Moderate Stress'];
+        }
+
+        // ============================================
+        // LOCATION-BASED DOCTOR SEARCH FUNCTIONS
+        // ============================================
+
+        let userLocation = null;
+        let locationError = null;
+
+        // Check location access on page load (for results section)
+        function checkLocationAccess() {
+            const locationStatusEl = document.getElementById('locationStatus');
+            const locationTextEl = document.getElementById('locationText');
+
+            if (!locationStatusEl) return; // Not in results section yet
+
+            if (!navigator.geolocation) {
+                locationTextEl.innerHTML = '⚠️ Geolocation not supported. Use city buttons below.';
+                locationStatusEl.classList.add('border-yellow-500/30');
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    locationTextEl.innerHTML = '✅ Location access granted! Click the button to find doctors near you.';
+                    locationStatusEl.classList.remove('border-yellow-500/30');
+                    locationStatusEl.classList.add('border-emerald-500/30', 'bg-emerald-900/10');
+
+                    // Hide spinner
+                    const spinner = locationStatusEl.querySelector('.loading-spinner-small');
+                    if (spinner) spinner.style.display = 'none';
+                },
+                (error) => {
+                    locationError = error;
+                    let errorMsg = '';
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMsg = '📍 Location access denied. You can still use city buttons below.';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMsg = '📍 Location unavailable. Try the city buttons below.';
+                            break;
+                        case error.TIMEOUT:
+                            errorMsg = '📍 Location request timed out. Try city buttons below.';
+                            break;
+                        default:
+                            errorMsg = '📍 Could not get location. Use city buttons below.';
+                    }
+                    locationTextEl.innerHTML = errorMsg;
+                    locationStatusEl.classList.add('border-yellow-500/30');
+
+                    // Hide spinner
+                    const spinner = locationStatusEl.querySelector('.loading-spinner-small');
+                    if (spinner) spinner.style.display = 'none';
+                },
+                { timeout: 10000, maximumAge: 600000 }
+            );
+        }
+
+        // Search for nearby doctors using current location
+        function searchNearbyDoctors() {
+            if (userLocation) {
+                // Use coordinates for more precise Google Maps search
+                const query = encodeURIComponent('psychiatrist psychologist mental health doctor near me');
+                const url = `https://www.google.com/search?q=${query}&near=${userLocation.lat},${userLocation.lng}`;
+                window.open(url, '_blank');
+            } else if (!navigator.geolocation) {
+                alert('Geolocation is not supported by your browser. Please use the city buttons below.');
+            } else {
+                // Try to get location first
+                const btn = document.getElementById('findDoctorsBtn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<div class="loading-spinner-small mr-2"></div> Getting your location...';
+                btn.disabled = true;
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        // Open Google search with location
+                        const query = encodeURIComponent('psychiatrist psychologist mental health doctor near me');
+                        const url = `https://www.google.com/search?q=${query}`;
+                        window.open(url, '_blank');
+
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+
+                        // Update status
+                        const locationTextEl = document.getElementById('locationText');
+                        if (locationTextEl) {
+                            locationTextEl.innerHTML = '✅ Location found! Search opened in new tab.';
+                        }
+                    },
+                    (error) => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+
+                        // Fallback to general search
+                        const query = encodeURIComponent('best psychiatrist psychologist mental health doctor India');
+                        const url = `https://www.google.com/search?q=${query}`;
+                        window.open(url, '_blank');
+
+                        // Update status
+                        const locationTextEl = document.getElementById('locationText');
+                        if (locationTextEl) {
+                            locationTextEl.innerHTML = '⚠️ Location unavailable. Showing general results.';
+                        }
+                    },
+                    { timeout: 10000 }
+                );
+            }
+        }
+
+        // Search doctors by specific city
+        function searchDoctorsByCity(city) {
+            const query = encodeURIComponent(`best psychiatrist psychologist mental health doctor in ${city}`);
+            const url = `https://www.google.com/search?q=${query}`;
+            window.open(url, '_blank');
+        }
+
+        // Initialize location check when results section becomes visible
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.id === 'resultsSection' && !mutation.target.classList.contains('hidden')) {
+                    setTimeout(checkLocationAccess, 500);
+                }
+            });
+        });
+
+        const resultsSection = document.getElementById('resultsSection');
+        if (resultsSection) {
+            observer.observe(resultsSection, { attributes: true, attributeFilter: ['class'] });
+        }
+    </script>
+
+    <!-- Chatbot Widget -->
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Builder & Hardware Recommender - LearnerHQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <style>
+        .toggle-switch {
+            position: relative;
+            width: 280px;
+            height: 50px;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 25px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            width: 50%;
+            height: calc(100% - 8px);
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            border-radius: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-slider.laptop {
+            transform: translateX(calc(100% - 4px));
+        }
+
+        .toggle-btn {
+            position: relative;
+            z-index: 1;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .toggle-btn.active {
+            color: white;
+        }
+
+        .toggle-btn:not(.active) {
+            color: #94a3b8;
+        }
+
+        .component-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 18px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .component-card:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+        }
+
+        .component-card.selected {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.15);
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+        }
+
+        /* Use Case Grid - Ensure consistent sizing */
+        #useCaseGrid {
+            display: flex !important;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        #useCaseGrid .component-card {
+            flex: 1 1 auto;
+            min-width: 100px;
+            max-width: 140px;
+            padding: 16px 12px;
+        }
+        
+        @media (min-width: 768px) {
+            #useCaseGrid .component-card {
+                min-width: 110px;
+                padding: 18px 16px;
+            }
+        }
+
+        .brand-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .brand-chip:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(139, 92, 246, 0.15);
+            transform: translateY(-1px);
+        }
+        
+        .brand-chip.selected {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.25);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.25);
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+        }
+
+        .spec-item {
+            padding: 10px 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.875rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 500;
+        }
+
+        .spec-item:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            background: rgba(139, 92, 246, 0.15);
+            transform: translateY(-1px);
+        }
+        
+        .spec-item.selected {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.25);
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .category-section {
+            margin-bottom: 28px;
+            padding: 24px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-section:hover {
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f1f5f9;
+            letter-spacing: -0.01em;
+        }
+        
+        .category-title span {
+            font-size: 1.4rem;
+        }
+
+        .price-tag-sm {
+            font-size: 0.75rem;
+            color: #a78bfa;
+            margin-left: 6px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .build-summary {
+            position: sticky;
+            top: 80px;
+        }
+
+        .ai-glow {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-top-color: #a78bfa;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-white font-inter antialiased min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-xl font-outfit font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">PC
+                        Builder</span>
+                </a>
+                <div class="flex items-center gap-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="themeToggle" class="theme-toggle" title="Toggle Dark/Light Mode"
+                        onclick="toggleTheme()">
+                        <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                    <a href="../index.html"
+                        class="text-sm text-slate-400 hover:text-white transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Back to Tools
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1
+                    class="text-3xl md:text-4xl font-outfit font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+                    🖥️ PC Builder & Hardware Recommender
+                </h1>
+                <p class="text-slate-400 max-w-2xl mx-auto mb-4">Build your perfect PC with AI-powered recommendations
+                    or find the best laptop deals from top comparison platforms.</p>
+
+                <!-- Educational Disclaimer -->
+                <div class="max-w-3xl mx-auto mb-6 p-4 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-xl border border-blue-500/20"
+                    id="disclaimerBanner">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">ℹ️</span>
+                        <div class="text-left">
+                            <h4 class="font-semibold text-blue-300 mb-1">Educational Guidance Platform</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                <strong class="text-slate-300">We guide, not sell.</strong> All prices shown are
+                                reference estimates collected from multiple sources.
+                                <span class="text-blue-400">Always verify current prices on retailer websites before
+                                    purchasing.</span>
+                                We are an educational platform — not affiliated with or promoting any specific store.
+                            </p>
+                        </div>
+                        <button
+                            onclick="this.parentElement.parentElement.classList.add('hidden'); localStorage.setItem('hideDisclaimer','1')"
+                            class="text-slate-500 hover:text-white transition" title="Dismiss">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Toggle Switch -->
+                <div class="toggle-switch mx-auto flex">
+                    <div class="toggle-slider" id="toggleSlider"></div>
+                    <div class="toggle-btn active" id="pcBtn" onclick="switchMode('pc')">🖥️ Build PC</div>
+                    <div class="toggle-btn" id="laptopBtn" onclick="switchMode('laptop')">💻 Laptop</div>
+                </div>
+            </div>
+
+            <!-- PC Builder Section -->
+            <div class="w-full flex justify-center">
+                <div id="pcSection" class="grid lg:grid-cols-3 gap-10 w-full max-w-6xl">
+                    <!-- Budget Section (MOVED TO TOP) -->
+                    <div class="lg:col-span-2 space-y-6 lg:pr-4">
+                        <div
+                            class="category-section fade-in bg-gradient-to-r from-purple-900/20 to-pink-900/20 border-purple-500/30">
+                            <div class="category-title"><span>💰</span> Set Your Budget First</div>
+                            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Enter Budget:</p>
+                                    <div class="flex items-center gap-3">
+                                        <input type="number" id="budgetInput" placeholder="Enter budget..."
+                                            value="100000" oninput="onBudgetChange()"
+                                            class="w-40 lg:w-48 px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-lg font-semibold">
+                                        <div class="flex gap-1 flex-shrink-0">
+                                            <span class="currency-btn spec-item selected" data-currency="inr"
+                                                onclick="selectCurrency(this)">₹</span>
+                                            <span class="currency-btn spec-item" data-currency="usd" onclick="selectCurrency(this)">$</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Quick Presets:</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <button onclick="setBudgetPreset(30000)"
+                                            class="px-3 py-2 bg-slate-700/50 rounded-lg text-sm hover:bg-purple-500/30 transition">₹30K</button>
+                                        <button onclick="setBudgetPreset(50000)"
+                                            class="px-3 py-2 bg-slate-700/50 rounded-lg text-sm hover:bg-purple-500/30 transition">₹50K</button>
+                                        <button onclick="setBudgetPreset(75000)"
+                                            class="px-3 py-2 bg-slate-700/50 rounded-lg text-sm hover:bg-purple-500/30 transition">₹75K</button>
+                                        <button onclick="setBudgetPreset(100000)"
+                                            class="px-3 py-2 bg-slate-700/50 rounded-lg text-sm hover:bg-purple-500/30 transition">₹1L</button>
+                                        <button onclick="setBudgetPreset(150000)"
+                                            class="px-3 py-2 bg-slate-700/50 rounded-lg text-sm hover:bg-purple-500/30 transition">₹1.5L</button>
+                                        <button onclick="setBudgetPreset(200000)"
+                                            class="px-3 py-2 bg-slate-700/50 rounded-lg text-sm hover:bg-purple-500/30 transition">₹2L+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="budgetAlert"
+                                class="hidden mt-3 p-3 rounded-lg bg-orange-500/20 border border-orange-500/30 text-orange-300 text-sm">
+                            </div>
+
+                            <!-- Where to Buy - Retailer Links -->
+                            <div class="mt-4 pt-4 border-t border-slate-700/50">
+                                <div class="flex justify-between items-center mb-2">
+                                    <p class="text-sm text-slate-400">🛒 Compare prices at trusted retailers (under
+                                    ₹<span id="budgetDisplayLink">100,000</span>):</p>
+                                    <button onclick="findNearbyStores()" class="text-xs flex items-center gap-1 text-purple-400 hover:text-purple-300 transition" id="locationBtn">
+                                        📍 <span id="locationBtnText">Find Stores Near Me</span>
+                                    </button>
+                                </div>
+                                <div class="grid grid-cols-3 md:grid-cols-6 gap-2" id="prebuiltLinks">
+                                    <a href="https://www.amazon.in/s?k=gaming+pc+under+100000" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="px-3 py-2 bg-slate-700/50 rounded-lg text-xs hover:bg-orange-500/20 hover:border-orange-500/30 border border-transparent transition flex flex-col items-center gap-1 text-center">
+                                        <span class="text-lg">🛒</span>
+                                        <span>Amazon</span>
+                                    </a>
+                                    <a href="https://www.flipkart.com/search?q=gaming+pc" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="px-3 py-2 bg-slate-700/50 rounded-lg text-xs hover:bg-blue-500/20 hover:border-blue-500/30 border border-transparent transition flex flex-col items-center gap-1 text-center">
+                                        <span class="text-lg">🛒</span>
+                                        <span>Flipkart</span>
+                                    </a>
+                                    <a href="https://mdcomputers.in/desktops" target="_blank" rel="noopener noreferrer"
+                                        class="px-3 py-2 bg-slate-700/50 rounded-lg text-xs hover:bg-green-500/20 hover:border-green-500/30 border border-transparent transition flex flex-col items-center gap-1 text-center">
+                                        <span class="text-lg">💻</span>
+                                        <span>MD Comp.</span>
+                                    </a>
+                                    <a href="https://www.primeabgb.com/buy-online-price-india/assembled-pc/"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="px-3 py-2 bg-slate-700/50 rounded-lg text-xs hover:bg-purple-500/20 hover:border-purple-500/30 border border-transparent transition flex flex-col items-center gap-1 text-center">
+                                        <span class="text-lg">💻</span>
+                                        <span>PrimeABGB</span>
+                                    </a>
+                                    <a href="https://www.vedantcomputers.com/pre-build-pc" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="px-3 py-2 bg-slate-700/50 rounded-lg text-xs hover:bg-cyan-500/20 hover:border-cyan-500/30 border border-transparent transition flex flex-col items-center gap-1 text-center">
+                                        <span class="text-lg">💻</span>
+                                        <span>Vedant</span>
+                                    </a>
+                                    <a href="https://www.modxcomputers.com/product-category/custom-pc/" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="px-3 py-2 bg-slate-700/50 rounded-lg text-xs hover:bg-red-500/20 hover:border-red-500/30 border border-transparent transition flex flex-col items-center gap-1 text-center">
+                                        <span class="text-lg">🔧</span>
+                                        <span>ModX</span>
+                                    </a>
+                                </div>
+                                <p class="text-[10px] text-slate-500 mt-2 text-center">💡 Prices may vary. We recommend
+                                    comparing prices across multiple stores. Use "Find Stores Near Me" to find local offline retailers.</p>
+                            </div>
+                        </div>
+
+                        <!-- Use Case -->
+                        <div class="category-section fade-in" style="animation-delay: 0.05s">
+                            <div class="category-title">
+                                <span>🎯</span> Use Case
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3" id="useCaseGrid">
+                                <div class="component-card text-center selected" data-value="gaming"
+                                    onclick="selectUseCase(this)">
+                                    <div class="text-2xl mb-2">🎮</div>
+                                    <div class="font-medium">Gaming</div>
+                                </div>
+                                <div class="component-card text-center" data-value="workstation"
+                                    onclick="selectUseCase(this)">
+                                    <div class="text-2xl mb-2">🎬</div>
+                                    <div class="font-medium">Workstation</div>
+                                </div>
+                                <div class="component-card text-center" data-value="office"
+                                    onclick="selectUseCase(this)">
+                                    <div class="text-2xl mb-2">💼</div>
+                                    <div class="font-medium">Office</div>
+                                </div>
+                                <div class="component-card text-center" data-value="student"
+                                    onclick="selectUseCase(this)">
+                                    <div class="text-2xl mb-2">📚</div>
+                                    <div class="font-medium">Student</div>
+                                </div>
+                                <div class="component-card text-center" data-value="streaming"
+                                    onclick="selectUseCase(this)">
+                                    <div class="text-2xl mb-2">📺</div>
+                                    <div class="font-medium">Streaming</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CPU -->
+                        <div class="category-section fade-in" style="animation-delay: 0.1s">
+                            <div class="category-title"><span>⚡</span> Processor (CPU)</div>
+                            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span class="brand-chip selected" data-brand="intel"
+                                            onclick="selectCpuBrand(this)">🔵 Intel</span>
+                                        <span class="brand-chip" data-brand="amd" onclick="selectCpuBrand(this)">🔴
+                                            AMD</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Filter by Generation:</p>
+                                    <select id="cpuGenFilter" onchange="filterCpuByGen(this.value)"
+                                        class="w-full px-3 py-2 bg-slate-800/50 border border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                                        <option value="all">All Generations</option>
+                                        <option value="Ultra2">🆕 Intel Core Ultra 2 (Latest)</option>
+                                        <option value="Ultra">Intel Core Ultra 1</option>
+                                        <option value="14th">Intel 14th Gen</option>
+                                        <option value="13th">Intel 13th Gen</option>
+                                        <option value="12th">Intel 12th Gen</option>
+                                        <option value="9000">🆕 AMD Ryzen 9000 (Latest)</option>
+                                        <option value="7000">AMD Ryzen 7000</option>
+                                        <option value="5000">AMD Ryzen 5000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <input type="text" id="cpuSearch" placeholder="🔍 Search processors..."
+                                    oninput="searchCpu(this.value)"
+                                    class="w-full px-3 py-2 bg-slate-800/50 border border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                            </div>
+                            <div id="cpuOptions" class="spec-grid"></div>
+                        </div>
+
+                        <!-- Motherboard -->
+                        <div class="category-section fade-in" style="animation-delay: 0.15s">
+                            <div class="category-title"><span>🔌</span> Motherboard</div>
+                            <div class="mb-3">
+                                <p class="text-sm text-slate-400 mb-2">Form Factor:</p>
+                                <div class="flex gap-2 flex-wrap" id="moboFormFactor">
+                                    <span class="spec-item selected" data-value="atx"
+                                        onclick="selectMoboForm(this)">ATX</span>
+                                    <span class="spec-item" data-value="matx"
+                                        onclick="selectMoboForm(this)">Micro-ATX</span>
+                                    <span class="spec-item" data-value="itx"
+                                        onclick="selectMoboForm(this)">Mini-ITX</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="brand-chip selected" data-brand="asus"
+                                        onclick="selectMoboBrand(this)">ASUS</span>
+                                    <span class="brand-chip" data-brand="msi" onclick="selectMoboBrand(this)">MSI</span>
+                                    <span class="brand-chip" data-brand="gigabyte"
+                                        onclick="selectMoboBrand(this)">Gigabyte</span>
+                                    <span class="brand-chip" data-brand="asrock"
+                                        onclick="selectMoboBrand(this)">ASRock</span>
+                                </div>
+                            </div>
+                            <div id="moboOptions" class="spec-grid"></div>
+                        </div>
+
+                        <!-- RAM -->
+                        <div class="category-section fade-in" style="animation-delay: 0.2s">
+                            <div class="category-title"><span>💾</span> Memory (RAM)</div>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Type:</p>
+                                    <div class="flex gap-2">
+                                        <span class="spec-item" data-value="ddr4"
+                                            onclick="selectRamType(this)">DDR4</span>
+                                        <span class="spec-item selected" data-value="ddr5"
+                                            onclick="selectRamType(this)">DDR5</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Capacity:</p>
+                                    <div class="flex gap-2 flex-wrap" id="ramCapacityOptions">
+                                        <span class="spec-item" data-value="8"
+                                            onclick="selectRamCapacity(this)">8GB</span>
+                                        <span class="spec-item selected" data-value="16"
+                                            onclick="selectRamCapacity(this)">16GB</span>
+                                        <span class="spec-item" data-value="32"
+                                            onclick="selectRamCapacity(this)">32GB</span>
+                                        <span class="spec-item" data-value="64"
+                                            onclick="selectRamCapacity(this)">64GB</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                    <div class="flex gap-2 flex-wrap" id="ramBrandOptions">
+                                        <span class="brand-chip selected"
+                                            onclick="selectBrandChip(this, 'ramBrandOptions')">Corsair</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'ramBrandOptions')">G.Skill</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'ramBrandOptions')">Kingston</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GPU -->
+                        <div class="category-section fade-in" style="animation-delay: 0.25s">
+                            <div class="category-title"><span>🎨</span> Graphics Card (GPU)</div>
+                            <div class="grid md:grid-cols-2 gap-4 mb-3">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <span class="brand-chip selected" data-brand="nvidia"
+                                            onclick="selectGpuBrand(this)">💚 NVIDIA</span>
+                                        <span class="brand-chip" data-brand="amd" onclick="selectGpuBrand(this)">❤️
+                                            AMD</span>
+                                        <span class="brand-chip" data-brand="integrated"
+                                            onclick="selectGpuBrand(this)">Integrated</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Filter by Series:</p>
+                                    <select id="gpuSeriesFilter" onchange="filterGpuBySeries(this.value)"
+                                        class="w-full px-3 py-2 bg-slate-800/50 border border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                                        <option value="all">All Series</option>
+                                        <optgroup label="NVIDIA">
+                                            <option value="50">🆕 RTX 50 Series (Latest 2025)</option>
+                                            <option value="40">RTX 40 Series</option>
+                                            <option value="30">RTX 30 Series</option>
+                                            <option value="16">GTX 16 Series</option>
+                                        </optgroup>
+                                        <optgroup label="AMD">
+                                            <option value="9000">🆕 RX 9000 Series (Latest 2025)</option>
+                                            <option value="7000">RX 7000 Series</option>
+                                            <option value="6000">RX 6000 Series</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="gpuOptions" class="spec-grid"></div>
+                        </div>
+
+                        <!-- Storage -->
+                        <div class="category-section fade-in" style="animation-delay: 0.3s">
+                            <div class="category-title"><span>💿</span> Storage</div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Primary (NVMe SSD):</p>
+                                    <div class="flex gap-2 flex-wrap" id="storageCapacityOptions">
+                                        <span class="spec-item" data-value="256"
+                                            onclick="selectStorageCapacity(this)">256GB</span>
+                                        <span class="spec-item selected" data-value="512"
+                                            onclick="selectStorageCapacity(this)">512GB</span>
+                                        <span class="spec-item" data-value="1000"
+                                            onclick="selectStorageCapacity(this)">1TB</span>
+                                        <span class="spec-item" data-value="2000"
+                                            onclick="selectStorageCapacity(this)">2TB</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                    <div class="flex gap-2 flex-wrap" id="storageBrandOptions">
+                                        <span class="brand-chip selected"
+                                            onclick="selectBrandChip(this, 'storageBrandOptions')">Samsung</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'storageBrandOptions')">WD</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'storageBrandOptions')">Crucial</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PSU -->
+                        <div class="category-section fade-in" style="animation-delay: 0.35s">
+                            <div class="category-title"><span>🔋</span> Power Supply (PSU)</div>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Wattage:</p>
+                                    <div class="flex gap-2 flex-wrap" id="psuWattageOptions">
+                                        <span class="spec-item" data-value="550"
+                                            onclick="selectPsuWattage(this)">550W</span>
+                                        <span class="spec-item selected" data-value="650"
+                                            onclick="selectPsuWattage(this)">650W</span>
+                                        <span class="spec-item" data-value="750"
+                                            onclick="selectPsuWattage(this)">750W</span>
+                                        <span class="spec-item" data-value="850"
+                                            onclick="selectPsuWattage(this)">850W</span>
+                                        <span class="spec-item" data-value="1000"
+                                            onclick="selectPsuWattage(this)">1000W</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Rating:</p>
+                                    <div class="flex gap-2 flex-wrap" id="psuRatingOptions">
+                                        <span class="spec-item" data-value="Bronze"
+                                            onclick="selectPsuRating(this)">Bronze</span>
+                                        <span class="spec-item selected" data-value="Gold"
+                                            onclick="selectPsuRating(this)">Gold</span>
+                                        <span class="spec-item" data-value="Platinum"
+                                            onclick="selectPsuRating(this)">Platinum</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                    <div class="flex gap-2 flex-wrap" id="psuBrandOptions">
+                                        <span class="brand-chip selected"
+                                            onclick="selectBrandChip(this, 'psuBrandOptions')">Corsair</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'psuBrandOptions')">Seasonic</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'psuBrandOptions')">EVGA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Monitor -->
+                        <div class="category-section fade-in" style="animation-delay: 0.4s">
+                            <div class="category-title"><span>🖥️</span> Monitor</div>
+                            <div class="grid md:grid-cols-4 gap-4">
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Size:</p>
+                                    <div class="flex gap-2 flex-wrap" id="monitorSizeOptions">
+                                        <span class="spec-item" data-value="24"
+                                            onclick="selectMonitorSize(this)">24"</span>
+                                        <span class="spec-item selected" data-value="27"
+                                            onclick="selectMonitorSize(this)">27"</span>
+                                        <span class="spec-item" data-value="32"
+                                            onclick="selectMonitorSize(this)">32"</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Resolution:</p>
+                                    <div class="flex gap-2 flex-wrap" id="monitorResOptions">
+                                        <span class="spec-item" data-value="1080p"
+                                            onclick="selectMonitorRes(this)">1080p</span>
+                                        <span class="spec-item selected" data-value="1440p"
+                                            onclick="selectMonitorRes(this)">1440p</span>
+                                        <span class="spec-item" data-value="4K"
+                                            onclick="selectMonitorRes(this)">4K</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Refresh:</p>
+                                    <div class="flex gap-2 flex-wrap" id="monitorRefreshOptions">
+                                        <span class="spec-item" data-value="60"
+                                            onclick="selectMonitorRefresh(this)">60Hz</span>
+                                        <span class="spec-item selected" data-value="144"
+                                            onclick="selectMonitorRefresh(this)">144Hz</span>
+                                        <span class="spec-item" data-value="165"
+                                            onclick="selectMonitorRefresh(this)">165Hz</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 mb-2">Brand:</p>
+                                    <div class="flex gap-2 flex-wrap" id="monitorBrandOptions">
+                                        <span class="brand-chip selected"
+                                            onclick="selectBrandChip(this, 'monitorBrandOptions')">LG</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'monitorBrandOptions')">Samsung</span>
+                                        <span class="brand-chip"
+                                            onclick="selectBrandChip(this, 'monitorBrandOptions')">ASUS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Build Summary -->
+                        <div class="lg:col-span-1 lg:pl-4">
+                            <div class="build-summary glass-card p-6 rounded-2xl border border-white/10">
+                                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                                    <span>🛒</span> Your Build
+                                </h3>
+
+                                <!-- AI Build Score Container -->
+                                <div id="buildScoreContainer" class="mb-4">
+                                    <!-- Scores will be rendered here by JS -->
+                                </div>
+
+                                <div id="buildSummary" class="space-y-3 mb-6">
+                                    <p class="text-slate-400 text-sm">Select components to see your build summary...</p>
+                                </div>
+                                <div class="border-t border-slate-700 pt-4 mb-4">
+                                    <div class="flex justify-between items-center text-lg">
+                                        <span class="font-semibold">Estimated Total:</span>
+                                        <span class="font-bold text-purple-400" id="totalPrice">₹0</span>
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 mt-1">💡 Prices are estimates. Check retailer
+                                        sites for current prices.</p>
+                                </div>
+                                <button onclick="getAIRecommendation()"
+                                    class="w-full px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 rounded-xl font-semibold transition transform hover:scale-[1.02] flex items-center justify-center gap-2 ai-glow">
+                                    <span>✨</span> Get AI Recommendation
+                                </button>
+                                <div id="aiResult" class="mt-4 hidden"></div>
+
+                                <!-- Disclaimer in Sidebar -->
+                                <div class="mt-4 p-3 bg-slate-800/30 rounded-lg border border-slate-700/30">
+                                    <p class="text-[10px] text-slate-500 leading-relaxed">
+                                        ⚠️ <strong>Disclaimer:</strong> This is a guidance tool for educational
+                                        purposes. Prices shown are approximate and may vary. We are not affiliated with
+                                        any retailer. Always verify specs and prices before purchasing.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laptop Section - Premium Redesigned UI -->
+                <div id="laptopSection" class="hidden w-full">
+                    <div class="w-full max-w-6xl mx-auto space-y-8">
+
+                        <!-- Hero Banner for Laptop Section -->
+                        <div
+                            class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-900/40 via-purple-900/30 to-pink-900/40 border border-purple-500/20 p-8 laptop-hero-banner">
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\" 60\" height=\"60\"
+                                viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\"
+                                fill-rule=\"evenodd\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36
+                                34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6
+                                34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6
+                                4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+                            <div class="relative z-10 text-center">
+                                <h2
+                                    class="text-2xl md:text-3xl font-outfit font-bold mb-2 bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300 bg-clip-text text-transparent">
+                                    💻 Find Your Perfect Laptop
+                                </h2>
+                                <p class="text-slate-400 max-w-2xl mx-auto">Smart recommendations & price comparisons
+                                    across India's top platforms. We help you decide, not sell.</p>
+                            </div>
+                        </div>
+
+                        <!-- Quick Budget Presets -->
+                        <div class="flex flex-wrap items-center justify-center gap-3 py-4">
+                            <span class="text-slate-400 text-sm font-medium">Quick Budget:</span>
+                            <button onclick="setLaptopBudget(30000, 45000)"
+                                class="laptop-budget-btn px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50 text-sm hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300">Under
+                                ₹45K</button>
+                            <button onclick="setLaptopBudget(45000, 70000)"
+                                class="laptop-budget-btn px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50 text-sm hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300">₹45K
+                                - 70K</button>
+                            <button onclick="setLaptopBudget(70000, 100000)"
+                                class="laptop-budget-btn px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50 text-sm hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300">₹70K
+                                - 1L</button>
+                            <button onclick="setLaptopBudget(100000, 150000)"
+                                class="laptop-budget-btn px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50 text-sm hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300">₹1L
+                                - 1.5L</button>
+                            <button onclick="setLaptopBudget(150000, 300000)"
+                                class="laptop-budget-btn px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50 text-sm hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-300">Premium
+                                1.5L+</button>
+                        </div>
+
+                        <div class="grid lg:grid-cols-5 gap-10">
+
+                            <!-- Left: Laptop Finder Wizard (Expanded 3 columns) -->
+                            <div class="lg:col-span-3 space-y-8 lg:pr-4">
+
+                                <!-- Use Case Selection Cards -->
+                                <div class="glass-card p-6 rounded-2xl border border-white/10 laptop-card-animate"
+                                    style="animation-delay: 0.1s">
+                                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                                        <span
+                                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-sm">🎯</span>
+                                        What will you use it for?
+                                    </h3>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"
+                                        id="laptopUseCaseGrid">
+                                        <div class="laptop-use-card selected" data-value="gaming"
+                                            onclick="selectLaptopUseCase(this)">
+                                            <div class="laptop-use-icon">🎮</div>
+                                            <div class="laptop-use-label">Gaming</div>
+                                            <div class="laptop-use-desc">High FPS, RTX Ready</div>
+                                        </div>
+                                        <div class="laptop-use-card" data-value="ultrabook"
+                                            onclick="selectLaptopUseCase(this)">
+                                            <div class="laptop-use-icon">✨</div>
+                                            <div class="laptop-use-label">Ultrabook</div>
+                                            <div class="laptop-use-desc">Thin & Light</div>
+                                        </div>
+                                        <div class="laptop-use-card" data-value="workstation"
+                                            onclick="selectLaptopUseCase(this)">
+                                            <div class="laptop-use-icon">🎬</div>
+                                            <div class="laptop-use-label">Creative</div>
+                                            <div class="laptop-use-desc">Video & Design</div>
+                                        </div>
+                                        <div class="laptop-use-card" data-value="student"
+                                            onclick="selectLaptopUseCase(this)">
+                                            <div class="laptop-use-icon">📚</div>
+                                            <div class="laptop-use-label">Student</div>
+                                            <div class="laptop-use-desc">Budget Friendly</div>
+                                        </div>
+                                        <div class="laptop-use-card" data-value="business"
+                                            onclick="selectLaptopUseCase(this)">
+                                            <div class="laptop-use-icon">💼</div>
+                                            <div class="laptop-use-label">Business</div>
+                                            <div class="laptop-use-desc">Professional</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Detailed Specs Selection -->
+                                <div class="glass-card p-6 rounded-2xl border border-white/10 laptop-card-animate"
+                                    style="animation-delay: 0.2s">
+                                    <h3 class="text-lg font-bold mb-5 flex items-center gap-2">
+                                        <span
+                                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-sm">⚙️</span>
+                                        Customize Your Preferences
+                                    </h3>
+
+                                    <div class="space-y-5">
+                                        <!-- Budget Range -->
+                                        <div class="laptop-spec-row">
+                                            <div class="flex items-center justify-between mb-3">
+                                                <label
+                                                    class="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                                                    <span>💰</span> Budget Range
+                                                </label>
+                                                <span class="text-xs text-purple-400 font-medium"
+                                                    id="budgetRangeDisplay">₹40,000 - ₹80,000</span>
+                                            </div>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div class="relative">
+                                                    <span
+                                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
+                                                    <input type="number" id="laptopBudgetMin" placeholder="Min"
+                                                        value="40000" oninput="updateBudgetDisplay()"
+                                                        class="w-full pl-8 pr-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none transition-all">
+                                                </div>
+                                                <div class="relative">
+                                                    <span
+                                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">₹</span>
+                                                    <input type="number" id="laptopBudgetMax" placeholder="Max"
+                                                        value="80000" oninput="updateBudgetDisplay()"
+                                                        class="w-full pl-8 pr-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none transition-all">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Brand Selection with Logos -->
+                                        <div class="laptop-spec-row">
+                                            <label
+                                                class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2 block">
+                                                <span>🏷️</span> Preferred Brands
+                                            </label>
+                                            <div class="flex flex-wrap gap-2" id="laptopBrands">
+                                                <span class="laptop-brand-chip selected" data-brand="any"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator all"></span>Any Brand
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="hp"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator hp"></span>HP
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="dell"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator dell"></span>Dell
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="lenovo"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator lenovo"></span>Lenovo
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="asus"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator asus"></span>ASUS
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="acer"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator acer"></span>Acer
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="msi"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator msi"></span>MSI
+                                                </span>
+                                                <span class="laptop-brand-chip" data-brand="apple"
+                                                    onclick="selectLaptopBrand(this)">
+                                                    <span class="brand-indicator apple"></span>Apple
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Display Size Visual Selector -->
+                                        <div class="laptop-spec-row">
+                                            <label
+                                                class="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2 block">
+                                                <span>📐</span> Display Size
+                                            </label>
+                                            <div class="flex gap-2 flex-wrap" id="displaySizeOptions">
+                                                <div class="laptop-size-chip" data-value="13"
+                                                    onclick="selectDisplaySize(this)">
+                                                    <span class="size-visual" style="width: 24px; height: 16px;"></span>
+                                                    <span>13"</span>
+                                                </div>
+                                                <div class="laptop-size-chip" data-value="14"
+                                                    onclick="selectDisplaySize(this)">
+                                                    <span class="size-visual" style="width: 28px; height: 18px;"></span>
+                                                    <span>14"</span>
+                                                </div>
+                                                <div class="laptop-size-chip selected" data-value="15"
+                                                    onclick="selectDisplaySize(this)">
+                                                    <span class="size-visual" style="width: 32px; height: 20px;"></span>
+                                                    <span>15.6"</span>
+                                                </div>
+                                                <div class="laptop-size-chip" data-value="16"
+                                                    onclick="selectDisplaySize(this)">
+                                                    <span class="size-visual" style="width: 36px; height: 22px;"></span>
+                                                    <span>16"</span>
+                                                </div>
+                                                <div class="laptop-size-chip" data-value="17"
+                                                    onclick="selectDisplaySize(this)">
+                                                    <span class="size-visual" style="width: 40px; height: 24px;"></span>
+                                                    <span>17"</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Additional Preferences Row -->
+                                        <div class="grid md:grid-cols-2 gap-4">
+                                            <div class="laptop-spec-row">
+                                                <label
+                                                    class="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2 block">
+                                                    <span>⚡</span> Processor Preference
+                                                </label>
+                                                <select id="laptopProcessor"
+                                                    class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                                                    <option value="any">Any Processor</option>
+                                                    <option value="intel">Intel Core (i5/i7/i9)</option>
+                                                    <option value="amd">AMD Ryzen</option>
+                                                    <option value="apple">Apple M-Series</option>
+                                                </select>
+                                            </div>
+                                            <div class="laptop-spec-row">
+                                                <label
+                                                    class="text-sm font-semibold text-slate-300 mb-2 flex items-center gap-2 block">
+                                                    <span>🎮</span> Graphics Requirement
+                                                </label>
+                                                <select id="laptopGpu"
+                                                    class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-purple-500 outline-none">
+                                                    <option value="any">Any/Integrated</option>
+                                                    <option value="dedicated">Dedicated GPU Required</option>
+                                                    <option value="nvidia">NVIDIA GeForce/RTX</option>
+                                                    <option value="amd">AMD Radeon</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Search Button -->
+                                    <button onclick="searchLaptops()"
+                                        class="w-full mt-6 px-6 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:via-pink-600 hover:to-orange-600 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-500/25 flex items-center justify-center gap-3 group">
+                                        <svg class="w-5 h-5 transform group-hover:rotate-12 transition-transform"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                        <span>Find Best Laptops</span>
+                                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- AI Laptop Results Container -->
+                                <div id="aiLaptopResult" class="hidden">
+                                    <!-- AI results will be injected here -->
+                                </div>
+                            </div>
+
+                            <!-- Right: Price Comparison Platforms (2 columns) -->
+                            <div class="lg:col-span-2 space-y-6 lg:pl-4">
+
+                                <!-- Featured Platform Card -->
+                                <div class="relative overflow-hidden rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-900/30 via-slate-900/50 to-pink-900/30 p-6 laptop-card-animate"
+                                    style="animation-delay: 0.15s">
+                                    <div
+                                        class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl">
+                                    </div>
+                                    <div class="relative z-10">
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span
+                                                class="px-2 py-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-md text-xs font-bold">FEATURED</span>
+                                            <span class="text-slate-400 text-xs">Multi-Platform Comparison</span>
+                                        </div>
+                                        <h3 class="text-xl font-bold mb-2">📊 Price Comparison Hub</h3>
+                                        <p class="text-slate-400 text-sm mb-4">Compare prices across India's top
+                                            e-commerce platforms instantly.</p>
+
+                                        <div class="space-y-3" id="laptopPlatforms">
+                                            <!-- Platform Links -->
+                                            <a href="https://www.pricebaba.com/laptops" target="_blank"
+                                                rel="noopener noreferrer" class="laptop-platform-link">
+                                                <div class="platform-icon pricebaba">💲</div>
+                                                <div class="platform-info">
+                                                    <h4>PriceBaba</h4>
+                                                    <p>Amazon, Flipkart, Croma & more</p>
+                                                </div>
+                                                <div class="platform-arrow">→</div>
+                                            </a>
+
+                                            <a href="https://www.91mobiles.com/laptops" target="_blank"
+                                                rel="noopener noreferrer" class="laptop-platform-link">
+                                                <div class="platform-icon mobiles91">📱</div>
+                                                <div class="platform-info">
+                                                    <h4>91Mobiles</h4>
+                                                    <p>Expert reviews + comparison</p>
+                                                </div>
+                                                <div class="platform-arrow">→</div>
+                                            </a>
+
+                                            <a href="https://www.smartprix.com/laptops" target="_blank"
+                                                rel="noopener noreferrer" class="laptop-platform-link">
+                                                <div class="platform-icon smartprix">📊</div>
+                                                <div class="platform-info">
+                                                    <h4>Smartprix</h4>
+                                                    <p>Specs & price alerts</p>
+                                                </div>
+                                                <div class="platform-arrow">→</div>
+                                            </a>
+
+                                            <a href="https://www.gadgets360.com/laptops" target="_blank"
+                                                rel="noopener noreferrer" class="laptop-platform-link">
+                                                <div class="platform-icon gadgets360">📰</div>
+                                                <div class="platform-info">
+                                                    <h4>Gadgets 360</h4>
+                                                    <p>NDTV Tech Portal</p>
+                                                </div>
+                                                <div class="platform-arrow">→</div>
+                                            </a>
+
+                                            <a href="https://versus.com/en/laptop" target="_blank"
+                                                rel="noopener noreferrer" class="laptop-platform-link">
+                                                <div class="platform-icon versus">⚖️</div>
+                                                <div class="platform-info">
+                                                    <h4>Versus.com</h4>
+                                                    <p>Side-by-side comparison</p>
+                                                </div>
+                                                <div class="platform-arrow">→</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Direct Retailer Links -->
+                                <div class="glass-card p-5 rounded-2xl border border-white/10 laptop-card-animate"
+                                    style="animation-delay: 0.25s">
+                                    <h4 class="font-semibold mb-4 flex items-center gap-2 text-sm">
+                                        <span>🛒</span> Shop Directly
+                                    </h4>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <a href="https://www.amazon.in/laptops" target="_blank"
+                                            rel="noopener noreferrer" class="retailer-chip amazon">
+                                            <span>🛒</span>
+                                            <span>Amazon</span>
+                                        </a>
+                                        <a href="https://www.flipkart.com/laptops" target="_blank"
+                                            rel="noopener noreferrer" class="retailer-chip flipkart">
+                                            <span>🛍️</span>
+                                            <span>Flipkart</span>
+                                        </a>
+                                        <a href="https://www.croma.com/laptops-tablets/c/10" target="_blank"
+                                            rel="noopener noreferrer" class="retailer-chip croma">
+                                            <span>🏪</span>
+                                            <span>Croma</span>
+                                        </a>
+                                        <a href="https://www.reliancedigital.in/laptops" target="_blank"
+                                            rel="noopener noreferrer" class="retailer-chip reliance">
+                                            <span>💻</span>
+                                            <span>Reliance</span>
+                                        </a>
+                                        <a href="https://www.vijaysales.com/laptops" target="_blank"
+                                            rel="noopener noreferrer" class="retailer-chip vijay">
+                                            <span>🖥️</span>
+                                            <span>Vijay Sales</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Tips Card -->
+                                <div class="glass-card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-amber-900/10 to-orange-900/10 laptop-card-animate"
+                                    style="animation-delay: 0.3s">
+                                    <h4 class="font-semibold mb-3 flex items-center gap-2 text-amber-300 text-sm">
+                                        <span>💡</span> Smart Buying Tips
+                                    </h4>
+                                    <ul class="space-y-2 text-xs text-slate-400">
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 mt-0.5">•</span>
+                                            <span>Compare prices across 3+ platforms before buying</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 mt-0.5">•</span>
+                                            <span>Check for student/corporate discounts</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 mt-0.5">•</span>
+                                            <span>Wait for sales: Big Billion Days, Amazon Prime Day</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 mt-0.5">•</span>
+                                            <span>Use bank offers & no-cost EMI options</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Disclaimer -->
+                                <div class="p-4 rounded-xl bg-slate-800/30 border border-slate-700/30">
+                                    <p class="text-[10px] text-slate-500 leading-relaxed">
+                                        ⚠️ <strong>Disclaimer:</strong> We provide guidance, not sales. All prices are
+                                        estimates and may vary based on retailer, time, and availability. We are not
+                                        affiliated with any retailer. Always verify specs and prices before purchasing.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 py-8 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+
+            <p class="mt-4 text-slate-600 text-xs">© 2026 LearnerHQ. Empowering students with smart decisions.</p>
+        </div>
+    </footer>
+
+    <script src="../js/apiManager.js"></script>
+    <script src="../js/pcBuilder.js"></script>
+    <script src="../js/chatbot.js"></script>
+
+    <script>
+        // Location-based Store Finder
+        function findNearbyStores() {
+            const btn = document.getElementById('locationBtn');
+            const btnText = document.getElementById('locationBtnText');
+            
+            if (!navigator.geolocation) {
+                alert('Geolocation is not supported by your browser.');
+                return;
+            }
+
+            const originalText = btnText.innerHTML;
+            btnText.innerHTML = 'Locating...';
+            btn.disabled = true;
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    
+                    // Open Google Maps search for computer stores near the user
+                    const query = encodeURIComponent('computer parts store near me');
+                    const url = `https://www.google.com/search?q=${query}&near=${lat},${lng}`; // Basic "near" parameter help 
+                    // Actually Google Search uses location from IP or user context, but passing lat/long in query sometimes helps or just opening the search is enough if the browser has permission.
+                    // Better yet:
+                    // const url = `https://www.google.com/maps/search/computer+stores/@${lat},${lng},13z`;
+                    // But user wanted "relevent info/answers". The wellness check opened a search.
+                    
+                    window.open(`https://www.google.com/search?q=computer+parts+stores&rllag=${lat},${lng},500`, '_blank');
+                    
+                    btnText.innerHTML = '✅ Stores Found';
+                    setTimeout(() => {
+                        btnText.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 2000);
+                },
+                (error) => {
+                    console.error('Location error:', error);
+                    alert('Unable to retrieve your location. Showing general results.');
+                    window.open('https://www.google.com/search?q=computer+parts+stores+near+me', '_blank');
+                    
+                    btnText.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            );
+        }
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isLight = html.classList.contains('light-mode');
+
+            if (isLight) {
+                html.classList.remove('light-mode');
+                localStorage.setItem('learnerhq-theme', 'dark');
+            } else {
+                html.classList.add('light-mode');
+                localStorage.setItem('learnerhq-theme', 'light');
+            }
+        }
+
+        // Load saved theme on page load
+        (function () {
+            const savedTheme = localStorage.getItem('learnerhq-theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+    </script>
+</body>
+
+</html>

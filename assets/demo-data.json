@@ -1,0 +1,27 @@
+{
+  "demoProfile": {
+    "curriculum": "India-CBSE",
+    "cpu": "Intel i5 11th Gen",
+    "ram": "8GB DDR4",
+    "gpu": "Integrated Intel UHD",
+    "budget": "55000",
+    "careerGoal": "AI Research in UK"
+  },
+  "demoPDFText": "Introduction to Machine Learning\n\nMachine learning is a subset of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed. The field has revolutionized technology in recent years.\n\nKey Concepts:\n1. Supervised Learning: Training models with labeled data\n2. Unsupervised Learning: Finding patterns in unlabeled data\n3. Neural Networks: Computing systems inspired by biological neural networks\n4. Deep Learning: Advanced neural networks with multiple layers\n\nApplications include computer vision, natural language processing, recommendation systems, and autonomous vehicles. Machine learning requires strong foundation in mathematics, statistics, and programming.\n\nPython is the primary language used in ML development, with libraries like NumPy, Pandas, Scikit-learn, TensorFlow, and PyTorch being essential tools.\n\nHardware Requirements:\n- Minimum 8GB RAM for basic ML tasks\n- 16GB+ recommended for deep learning\n- GPU acceleration significantly improves training speed\n- Modern multi-core CPU for data preprocessing\n\nThe field is constantly evolving with new techniques and architectures emerging regularly. Continuous learning is essential for practitioners.",
+  "expectedResults": {
+    "hardwareScore": 75,
+    "recommendedLaptops": [
+      "HP Pavilion 15 - ₹52,999",
+      "Lenovo IdeaPad Slim 3 - ₹48,999",
+      "ASUS VivoBook 15 - ₹42,999"
+    ],
+    "roiCountry": "UK",
+    "paybackPeriod": "36.4 months",
+    "cloudSwapRecommended": false
+  },
+  "metadata": {
+    "version": "1.0",
+    "description": "Demo data for LearnerHQ - Innov-A-Thon presentation",
+    "lastUpdated": "2026-02-01"
+  }
+}

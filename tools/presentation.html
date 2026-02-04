@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPT Generator - LearnerHQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body class="bg-slate-950 text-white font-inter antialiased min-h-screen">
+
+    <nav class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-xl font-outfit font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">LearnerHQ</span>
+                </a>
+                <a href="../index.html"
+                    class="text-sm text-slate-400 hover:text-white transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Tools
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <div
+                    class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h1
+                    class="text-4xl font-outfit font-bold mb-4 bg-gradient-to-r from-blue-400 to-indigo-600 bg-clip-text text-transparent">
+                    Career Strategy Presentation</h1>
+                <p class="text-slate-400 max-w-2xl mx-auto">Generate a professional 7-slide PowerPoint presentation for
+                    your educational journey.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="glass-card p-8 rounded-2xl border border-white/10">
+                    <h2 class="text-xl font-bold mb-6">Presentation Details</h2>
+
+                    <form id="pptForm" class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g., John Doe" required
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Career Goal</label>
+                            <input type="text" id="careerGoal" placeholder="e.g., AI Research in UK" required
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Curriculum</label>
+                            <select id="curriculum"
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition">
+                                <option value="India-CBSE">India - CBSE</option>
+                                <option value="India-ICSE">India - ICSE</option>
+                                <option value="Global-IB">Global - IB</option>
+                                <option value="US-HighSchool">US - High School</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Target Country</label>
+                            <select id="country"
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition">
+                                <option value="UK">United Kingdom</option>
+                                <option value="US">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Australia">Australia</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="generateBtn"
+                            class="w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl font-semibold shadow-lg shadow-blue-500/50 transition transform hover:scale-[1.02]">
+                            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Generate & Download PPT
+                        </button>
+                    </form>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl border border-white/10">
+                    <h2 class="text-xl font-bold mb-6">Slide Preview</h2>
+                    <div id="slidePreview" class="space-y-3">
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 1</span>
+                            <p class="font-semibold mt-1">Title Slide - Your Educational Journey</p>
+                        </div>
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 2</span>
+                            <p class="font-semibold mt-1">Hardware & Technology Setup</p>
+                        </div>
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 3</span>
+                            <p class="font-semibold mt-1">Study Abroad Timeline</p>
+                        </div>
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 4</span>
+                            <p class="font-semibold mt-1">Financial Investment & ROI</p>
+                        </div>
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 5</span>
+                            <p class="font-semibold mt-1">Study Strategy & Techniques</p>
+                        </div>
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 6</span>
+                            <p class="font-semibold mt-1">Cloud Tools for Success</p>
+                        </div>
+                        <div class="p-4 bg-slate-800/50 rounded-lg border border-slate-700">
+                            <span class="text-blue-400 text-sm font-semibold">Slide 7</span>
+                            <p class="font-semibold mt-1">Next Steps & Action Plan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/pptGenerator.js"></script>
+    <script>
+        document.getElementById('pptForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('generateBtn');
+            btn.innerHTML = '<div class="loading-spinner inline-block mr-2"></div> Generating...';
+            btn.disabled = true;
+
+            const data = {
+                name: document.getElementById('name').value,
+                careerGoal: document.getElementById('careerGoal').value,
+                curriculum: document.getElementById('curriculum').value,
+                country: document.getElementById('country').value
+            };
+
+            // Generate slides data
+            const slides = [
+                { title: 'My Educational Journey', content: [`Goal: ${data.careerGoal}`, `Curriculum: ${data.curriculum}`, `Target: ${data.country}`], imagePrompt: 'Student with laptop planning future' },
+                { title: 'Hardware & Tech Setup', content: ['Curriculum-specific requirements', 'Recommended specifications', 'Budget optimization'], imagePrompt: 'Modern laptop setup' },
+                { title: 'Study Abroad Timeline', content: ['Research phase', 'Application deadlines', 'Visa process', 'Departure preparation'], imagePrompt: 'Calendar with planning' },
+                { title: 'Financial Planning', content: ['Tuition investment', 'Part-time work options', 'ROI calculation', 'Scholarship opportunities'], imagePrompt: 'Financial charts' },
+                { title: 'Study Strategy', content: ['Active recall techniques', 'Spaced repetition', 'Note-taking systems', 'Exam preparation'], imagePrompt: 'Student studying' },
+                { title: 'Cloud Tools', content: ['Google Colab for coding', 'Photopea for design', 'Notion for notes', 'Free productivity suite'], imagePrompt: 'Cloud computing icons' },
+                { title: 'Next Steps', content: ['Immediate actions', 'This week goals', 'Monthly milestones', 'Success metrics'], imagePrompt: 'Success path' }
+            ];
+
+            PPTGenerator.generate(slides, data);
+
+            setTimeout(() => {
+                btn.innerHTML = '✓ Downloaded Successfully!';
+                btn.classList.remove('from-blue-500', 'to-indigo-600');
+                btn.classList.add('from-green-500', 'to-emerald-600');
+
+                setTimeout(() => {
+                    btn.innerHTML = '<svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg> Generate & Download PPT';
+                    btn.classList.remove('from-green-500', 'to-emerald-600');
+                    btn.classList.add('from-blue-500', 'to-indigo-600');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body>
+
+</html>

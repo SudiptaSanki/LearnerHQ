@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Comparison - LearnerHQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body class="bg-slate-950 text-white font-inter min-h-screen">
+    <nav class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+            <a href="../index.html" class="flex items-center gap-2">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                </div>
+                <span class="text-xl font-bold">LearnerHQ</span>
+            </a>
+            <a href="../index.html" class="text-slate-400 hover:text-white">← Back</a>
+        </div>
+    </nav>
+    <main class="pt-24 pb-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold mb-4 text-pink-400">Curriculum Comparison Tool</h1>
+                <p class="text-slate-400">Compare CBSE, ICSE, IB & US curricula side by side</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- CBSE -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-blue-500">
+                    <h3 class="text-2xl font-bold mb-2 text-blue-400">CBSE</h3>
+                    <p class="text-slate-400 mb-4">Central Board of Secondary Education</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Python programming
+                            focus</div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Strong in Math &
+                            Science</div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> 8GB RAM minimum</div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> CPU priority for ML
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400">→</span> Best for: Engineering,
+                            Tech careers</div>
+                    </div>
+                </div>
+                <!-- ICSE -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-purple-500">
+                    <h3 class="text-2xl font-bold mb-2 text-purple-400">ICSE</h3>
+                    <p class="text-slate-400 mb-4">Indian Certificate of Secondary Education</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Java/BlueJ focus
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Literature & Arts
+                            strong</div>
+                        <div class="flex items-center gap-2"><span class="text-yellow-400">!</span> 16GB RAM recommended
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> RAM priority for Java
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400">→</span> Best for: Software
+                            Dev, Research</div>
+                    </div>
+                </div>
+                <!-- IB -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-green-500">
+                    <h3 class="text-2xl font-bold mb-2 text-green-400">IB</h3>
+                    <p class="text-slate-400 mb-4">International Baccalaureate</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Globally recognized
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Balanced curriculum
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> 8GB RAM minimum</div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> CAS requirement</div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400">→</span> Best for: Study
+                            Abroad, Business</div>
+                    </div>
+                </div>
+                <!-- US -->
+                <div class="glass-card p-6 rounded-2xl border-l-4 border-orange-500">
+                    <h3 class="text-2xl font-bold mb-2 text-orange-400">US High School</h3>
+                    <p class="text-slate-400 mb-4">American Curriculum</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Flexible subject
+                            choice</div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> Creative projects
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> GPU beneficial</div>
+                        <div class="flex items-center gap-2"><span class="text-green-400">✓</span> AP courses available
+                        </div>
+                        <div class="flex items-center gap-2"><span class="text-cyan-400">→</span> Best for: Arts,
+                            Creative Tech</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Comparison Table -->
+            <div class="glass-card p-6 rounded-2xl mt-8 overflow-x-auto">
+                <h3 class="text-xl font-bold mb-4">Quick Comparison</h3>
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-left border-b border-slate-700">
+                            <th class="py-3">Feature</th>
+                            <th class="py-3 text-blue-400">CBSE</th>
+                            <th class="py-3 text-purple-400">ICSE</th>
+                            <th class="py-3 text-green-400">IB</th>
+                            <th class="py-3 text-orange-400">US</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-300">
+                        <tr class="border-b border-slate-800">
+                            <td class="py-3">Min RAM</td>
+                            <td>8GB</td>
+                            <td>16GB</td>
+                            <td>8GB</td>
+                            <td>8GB</td>
+                        </tr>
+                        <tr class="border-b border-slate-800">
+                            <td class="py-3">Language</td>
+                            <td>Python</td>
+                            <td>Java</td>
+                            <td>Varies</td>
+                            <td>Varies</td>
+                        </tr>
+                        <tr class="border-b border-slate-800">
+                            <td class="py-3">Focus</td>
+                            <td>CPU</td>
+                            <td>RAM</td>
+                            <td>Balanced</td>
+                            <td>GPU</td>
+                        </tr>
+                        <tr class="border-b border-slate-800">
+                            <td class="py-3">Global</td>
+                            <td>India</td>
+                            <td>India</td>
+                            <td>Worldwide</td>
+                            <td>US/Intl</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3">Study Abroad</td>
+                            <td>Good</td>
+                            <td>Good</td>
+                            <td>Excellent</td>
+                            <td>Excellent</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chatbot Widget -->
+    <script src="../js/apiManager.js"></script>
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Notes Generator - LearnerHQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body class="bg-slate-950 text-white font-inter antialiased min-h-screen">
+
+    <nav class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-xl font-outfit font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">LearnerHQ</span>
+                </a>
+                <a href="../index.html"
+                    class="text-sm text-slate-400 hover:text-white transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Tools
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <div
+                    class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <h1
+                    class="text-4xl font-outfit font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-600 bg-clip-text text-transparent">
+                    AI Study Notes Generator</h1>
+                <p class="text-slate-400 max-w-2xl mx-auto">Upload your study material (PDF) and get AI-powered
+                    summaries, mnemonics, and active recall quizzes.</p>
+            </div>
+
+            <!-- Upload Zone -->
+            <div class="glass-card p-8 rounded-2xl border border-white/10 mb-8">
+                <div class="p-8 border-2 border-dashed border-slate-700 hover:border-orange-500/50 rounded-xl transition-all cursor-pointer"
+                    id="dropZone">
+                    <input type="file" id="pdfUpload" accept=".pdf" class="hidden">
+                    <label for="pdfUpload" class="cursor-pointer flex flex-col items-center gap-4">
+                        <svg class="w-16 h-16 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <div class="text-center">
+                            <span class="text-xl font-semibold block mb-1">Drop your PDF here</span>
+                            <span class="text-slate-400 text-sm">or click to browse</span>
+                        </div>
+                        <span id="fileName" class="text-sm text-orange-400 font-semibold"></span>
+                    </label>
+                </div>
+                <div id="pdfStatus" class="mt-4 text-center text-sm"></div>
+            </div>
+
+            <!-- Results -->
+            <div id="resultsSection" class="hidden space-y-6">
+                <!-- Summary -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-orange-400">📝</span> Summary
+                    </h3>
+                    <div id="summary" class="text-slate-300 leading-relaxed"></div>
+                </div>
+
+                <!-- Mnemonics -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-orange-400">🧠</span> Key Mnemonics
+                    </h3>
+                    <ul id="mnemonics" class="space-y-2"></ul>
+                </div>
+
+                <!-- Quiz -->
+                <div class="glass-card p-6 rounded-2xl border border-white/10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="text-orange-400">❓</span> Active Recall Quiz
+                    </h3>
+                    <div id="quizSection" class="space-y-4"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/pdfExtractor.js"></script>
+    <script src="../js/aiLogic.js"></script>
+    <script>
+        document.getElementById('pdfUpload').addEventListener('change', async function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('pdfStatus').innerHTML = '<span class="text-cyan-400">⏳ Extracting text...</span>';
+
+            try {
+                const text = await PDFExtractor.extractText(file);
+                document.getElementById('pdfStatus').innerHTML = '<span class="text-green-400">✓ PDF processed successfully!</span>';
+
+                if (text.length < 50) {
+                    document.getElementById('pdfStatus').innerHTML = '<span class="text-orange-400">⚠ PDF has limited text. Try a different file.</span>';
+                    return;
+                }
+
+                // Generate study notes
+                const notes = AILogic.generateActiveRecall(text);
+                displayResults(notes, text);
+            } catch (error) {
+                document.getElementById('pdfStatus').innerHTML = '<span class="text-red-400">✗ Error processing PDF</span>';
+            }
+        });
+
+        function displayResults(notes, fullText) {
+            document.getElementById('resultsSection').classList.remove('hidden');
+
+            // Summary
+            document.getElementById('summary').textContent = fullText.substring(0, 500) + '...';
+
+            // Mnemonics
+            const mnemonicsList = document.getElementById('mnemonics');
+            mnemonicsList.innerHTML = notes.mnemonics.map(m => `<li class="flex items-start gap-2"><span class="text-orange-400">•</span> ${m}</li>`).join('');
+
+            // Quiz
+            const quizSection = document.getElementById('quizSection');
+            quizSection.innerHTML = notes.questions.map((q, i) => `
+                <div class="quiz-card p-4 bg-slate-800/50 rounded-lg border border-slate-700" onclick="this.querySelector('.answer').classList.toggle('hidden')">
+                    <div class="flex items-start justify-between cursor-pointer">
+                        <p class="font-semibold"><span class="text-orange-400">Q${i + 1}.</span> ${q.question}</p>
+                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="answer hidden mt-3 pt-3 border-t border-slate-700 text-green-400">${q.answer}</div>
+                </div>
+            `).join('');
+        }
+    </script>
+
+    <!-- Chatbot Widget -->
+    <script src="../js/apiManager.js"></script>
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnerHQ - Your Future Deserves More Than Guesswork</title>
+    <meta
+      name="description"
+      content="LearnerHQ helps you build a personalized education plan with AI guidance, so you move forward with clarity and confidence."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  </head>
+
+  <body class="bg-slate-950 text-white font-inter antialiased">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="flex items-center gap-2">
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <span
+              class="text-xl font-outfit font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+              >LearnerHQ</span
+            >
+          </a>
+          <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-sm hover:text-cyan-400 transition"
+              >Home</a
+            >
+            <a href="#tools" class="text-sm hover:text-cyan-400 transition"
+              >Tools</a
+            >
+            <a href="#journey" class="text-sm hover:text-cyan-400 transition"
+              >Learning Journey</a
+            >
+            <a href="#resources" class="text-sm hover:text-cyan-400 transition"
+              >Resources</a
+            >
+            <!-- Theme Toggle Button -->
+            <button
+              id="themeToggle"
+              class="theme-toggle"
+              title="Toggle Dark/Light Mode"
+              onclick="toggleTheme()"
+            >
+              <svg
+                class="sun-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                class="moon-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
+            <a
+              href="#tools"
+              class="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-sm font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition"
+              >Get Started</a
+            >
+          </div>
+          <button id="mobileMenuBtn" class="md:hidden text-white">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10"
+      ></div>
+      <div class="max-w-5xl mx-auto text-center relative z-10">
+        <div class="animate-fadeIn">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-8"
+          >
+            <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+            <span class="text-sm text-cyan-400"
+              >Crafted by Cyber Crusaders</span
+            >
+          </div>
+          <h1
+            class="text-5xl md:text-7xl font-outfit font-bold mb-6 leading-tight"
+          >
+            Your future deserves<br />
+            <span
+              class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+              >more than guesswork</span
+            >
+          </h1>
+          <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            LearnerHQ helps you build a personalized education plan with AI
+            guidance, so you move forward with clarity and confidence.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#tools"
+              class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold hover:shadow-xl hover:shadow-cyan-500/50 transition transform hover:scale-105 inline-block"
+            >
+              Find My Path
+            </a>
+            <a
+              href="#journey"
+              class="px-8 py-4 border-2 border-cyan-500/30 rounded-xl font-semibold hover:bg-cyan-500/10 transition inline-block"
+            >
+              See How It Works
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Slideshow Section -->
+    <section id="journey" class="py-20 px-6 relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-slate-900/50 to-slate-950"
+      ></div>
+      <div class="max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mb-4">
+            Clarity isn't luck,
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+              >it's a system</span
+            >
+          </h2>
+          <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+            LearnerHQ turns uncertainty into a plan with three simple steps
+          </p>
+        </div>
+
+        <!-- Slideshow Container -->
+        <div
+          class="slideshow-container glass-card rounded-3xl p-8 md:p-12 border border-white/10 relative"
+          style="min-height: 400px"
+        >
+          <!-- Progress Bar -->
+          <div
+            class="absolute top-0 left-0 right-0 h-1 bg-slate-700/50 rounded-t-3xl overflow-hidden"
+          >
+            <div
+              id="slideProgress"
+              class="h-full bg-gradient-to-r from-cyan-500 to-blue-600 transition-all duration-100"
+              style="width: 0%"
+            ></div>
+          </div>
+
+          <!-- Slide 1: We Listen -->
+          <div class="slide active" data-slide="1">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/30 animate-pulse-slow"
+                >
+                  <span class="text-5xl md:text-6xl font-outfit font-bold"
+                    >1</span
+                  >
+                </div>
+              </div>
+              <div class="text-center md:text-left flex-1">
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/20 rounded-full mb-4"
+                >
+                  <svg
+                    class="w-4 h-4 text-cyan-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                    />
+                  </svg>
+                  <span class="text-cyan-400 text-sm font-medium">Step 1</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-outfit font-bold mb-4">
+                  We Listen
+                </h3>
+                <p class="text-lg text-slate-300 mb-6">
+                  Understanding your goals, strengths, and constraints is where
+                  every successful journey begins. Tell us about your dreams.
+                </p>
+                <div
+                  class="flex flex-wrap gap-3 justify-center md:justify-start"
+                >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >🎯 Your Goals</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >💪 Your Strengths</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >📊 Your Situation</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Learn -->
+          <div class="slide" data-slide="2" style="display: none">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-purple-500/30 animate-pulse-slow"
+                >
+                  <span class="text-5xl md:text-6xl font-outfit font-bold"
+                    >2</span
+                  >
+                </div>
+              </div>
+              <div class="text-center md:text-left flex-1">
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/20 rounded-full mb-4"
+                >
+                  <svg
+                    class="w-4 h-4 text-purple-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    />
+                  </svg>
+                  <span class="text-purple-400 text-sm font-medium"
+                    >Step 2</span
+                  >
+                </div>
+                <h3 class="text-3xl md:text-4xl font-outfit font-bold mb-4">
+                  Learn
+                </h3>
+                <p class="text-lg text-slate-300 mb-6">
+                  AI-powered personalized education pathway with expert guidance
+                  tailored to your unique needs and learning style.
+                </p>
+                <div
+                  class="flex flex-wrap gap-3 justify-center md:justify-start"
+                >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >🤖 AI Guidance</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >📚 Custom Path</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >🎓 Expert Tips</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Lead -->
+          <div class="slide" data-slide="3" style="display: none">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-green-500/30 animate-pulse-slow"
+                >
+                  <span class="text-5xl md:text-6xl font-outfit font-bold"
+                    >3</span
+                  >
+                </div>
+              </div>
+              <div class="text-center md:text-left flex-1">
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 rounded-full mb-4"
+                >
+                  <svg
+                    class="w-4 h-4 text-green-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                  <span class="text-green-400 text-sm font-medium">Step 3</span>
+                </div>
+                <h3 class="text-3xl md:text-4xl font-outfit font-bold mb-4">
+                  Lead
+                </h3>
+                <p class="text-lg text-slate-300 mb-6">
+                  Move forward with confidence, supported every step of the way
+                  to your dream career. Take charge of your future!
+                </p>
+                <div
+                  class="flex flex-wrap gap-3 justify-center md:justify-start"
+                >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >🚀 Take Action</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >💼 Dream Career</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-400"
+                    >🏆 Success</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Controls -->
+          <div class="flex items-center justify-between mt-10">
+            <button
+              onclick="changeSlide(-1)"
+              class="p-3 rounded-xl bg-slate-800/50 hover:bg-slate-700/50 border border-white/10 transition group"
+            >
+              <svg
+                class="w-6 h-6 text-slate-400 group-hover:text-white transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            <!-- Slide Indicators -->
+            <div class="flex gap-3">
+              <button
+                onclick="goToSlide(1)"
+                class="slide-dot active w-3 h-3 rounded-full bg-cyan-500 transition-all hover:scale-125"
+                data-slide="1"
+              ></button>
+              <button
+                onclick="goToSlide(2)"
+                class="slide-dot w-3 h-3 rounded-full bg-slate-600 transition-all hover:scale-125"
+                data-slide="2"
+              ></button>
+              <button
+                onclick="goToSlide(3)"
+                class="slide-dot w-3 h-3 rounded-full bg-slate-600 transition-all hover:scale-125"
+                data-slide="3"
+              ></button>
+            </div>
+
+            <button
+              onclick="changeSlide(1)"
+              class="p-3 rounded-xl bg-slate-800/50 hover:bg-slate-700/50 border border-white/10 transition group"
+            >
+              <svg
+                class="w-6 h-6 text-slate-400 group-hover:text-white transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick 3-Step Summary below slideshow -->
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <button
+            onclick="goToSlide(1)"
+            class="step-mini p-4 glass-card rounded-xl text-center hover:border-cyan-500/50 transition cursor-pointer group"
+            data-step="1"
+          >
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition"
+            >
+              <span class="font-bold">1</span>
+            </div>
+            <span class="text-sm font-semibold">Listen</span>
+          </button>
+          <button
+            onclick="goToSlide(2)"
+            class="step-mini p-4 glass-card rounded-xl text-center hover:border-purple-500/50 transition cursor-pointer group"
+            data-step="2"
+          >
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition"
+            >
+              <span class="font-bold">2</span>
+            </div>
+            <span class="text-sm font-semibold">Learn</span>
+          </button>
+          <button
+            onclick="goToSlide(3)"
+            class="step-mini p-4 glass-card rounded-xl text-center hover:border-green-500/50 transition cursor-pointer group"
+            data-step="3"
+          >
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition"
+            >
+              <span class="font-bold">3</span>
+            </div>
+            <span class="text-sm font-semibold">Lead</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Hub -->
+    <section
+      id="tools"
+      class="py-20 px-6 bg-gradient-to-b from-slate-950 to-slate-900"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mb-4">
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+              >Comprehensive Tools</span
+            >
+            for Your Journey
+          </h2>
+          <p class="text-slate-400 text-lg">
+            Not a search engine. A complete guide.
+          </p>
+        </div>
+
+        <!-- Tool 0: VerifAI News Detection -->
+        <a
+          href="https://verifai-news.web.app/"
+          target="_blank"
+          class="glass-card p-6 rounded-2xl border border-white/10 hover:border-red-500/50 transition group block lg:col-span-3 md:col-span-2"
+        >
+          <div class="flex flex-col md:flex-row md:items-center gap-6">
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-700 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <h3
+                  class="text-xl font-bold group-hover:text-red-400 transition"
+                >
+                  VerifAI
+                </h3>
+                <span
+                  class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded-full"
+                  >False News Detector</span
+                >
+              </div>
+              <p class="text-sm text-slate-400">
+                Verify educational news and articles. Protect yourself from
+                misinformation with AI-powered fact-checking.
+              </p>
+            </div>
+            <span
+              class="text-red-400 text-sm font-semibold flex items-center gap-2 flex-shrink-0"
+            >
+              Open VerifAI
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </span>
+          </div>
+        </a>
+        <br />
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Tool 1: Mental Health Check -->
+          <a
+            href="tools/mental-health.html"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-emerald-500/50 transition group block"
+          >
+            <div class="absolute top-3 right-3">
+              <span class="new-badge">✨ NEW</span>
+            </div>
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition"
+            >
+              Wellness Check
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Quick student wellness assessment with AI insights.
+            </p>
+            <span
+              class="text-emerald-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Take Test
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Tool 2: Hardware Analyzer -->
+          <a
+            href="tools/hardware.html"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-purple-500/50 transition group block relative"
+          >
+            <!-- NEW Badge -->
+            <div class="absolute top-3 right-3">
+              <span class="new-badge"> 📈 Trending </span>
+            </div>
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-purple-400 transition flex items-center"
+            >
+              PC Builder & Hardware
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Build custom PCs with AI recommendations. Get laptop suggestions &
+              compare prices across 6 retailers.
+            </p>
+            <span
+              class="text-purple-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Open Tool
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Tool 3: Study Abroad Calculator -->
+          <a
+            href="tools/abroad.html"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-green-500/50 transition group block"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-green-400 transition"
+            >
+              Study Abroad ROI
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Calculate investment payback period with live currency rates.
+            </p>
+            <span
+              class="text-green-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Open Tool
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Tool 4: Study Notes -->
+          <a
+            href="tools/notes.html"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-orange-500/50 transition group block"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-orange-400 transition"
+            >
+              AI Study Notes
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Upload PDFs to get AI-powered summaries and quizzes.
+            </p>
+            <span
+              class="text-orange-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Open Tool
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Tool 5: Budget Optimizer -->
+          <a
+            href="tools/budget.html"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-yellow-500/50 transition group block"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition"
+            >
+              Cloud-Swap Budget
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Find free cloud alternatives to expensive tools.
+            </p>
+            <span
+              class="text-yellow-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Open Tool
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Tool 6: Curriculum Comparator -->
+          <a
+            href="tools/curriculum.html"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-pink-500/50 transition group block"
+          >
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-pink-400 transition"
+            >
+              Curriculum Compare
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Compare CBSE, ICSE, IB, and US curriculum side-by-side.
+            </p>
+            <span
+              class="text-pink-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Open Tool
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </a>
+
+          <!-- Tool 7: AI EduBot (Info Card) -->
+          <div
+            onclick="if (window.ChatbotWidget) ChatbotWidget.toggle();"
+            class="glass-card p-6 rounded-2xl border border-white/10 hover:border-violet-500/50 transition group block cursor-pointer relative overflow-hidden lg:col-start-2"
+          >
+            <div class="absolute top-3 right-3">
+              <span
+                class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full flex items-center gap-1"
+              >
+                <span
+                  class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+                ></span>
+                Online
+              </span>
+            </div>
+            <div
+              class="w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition"
+            >
+              <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                />
+              </svg>
+            </div>
+            <h3
+              class="text-xl font-bold mb-2 group-hover:text-violet-400 transition"
+            >
+              EduBot AI Assistant
+            </h3>
+            <p class="text-sm text-slate-400 mb-4">
+              Click anywhere to chat! Available on every page to guide you.
+            </p>
+            <span
+              class="text-violet-400 text-sm font-semibold flex items-center gap-2"
+            >
+              Start Chat
+              <svg
+                class="w-4 h-4 group-hover:translate-x-1 transition"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-20 px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-outfit font-bold mb-4">
+            Free <span class="text-cyan-400">Resources</span>
+          </h2>
+          <p class="text-slate-400">
+            Curated tools and platforms to accelerate your journey
+          </p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-4">
+          <a
+            href="https://colab.research.google.com"
+            target="_blank"
+            class="p-4 glass-card rounded-xl hover:border-cyan-500/30 transition text-center"
+          >
+            <div class="text-2xl mb-2">💻</div>
+            <h4 class="font-semibold">Google Colab</h4>
+            <p class="text-xs text-slate-400">Free GPU for coding</p>
+          </a>
+          <a
+            href="https://www.photopea.com"
+            target="_blank"
+            class="p-4 glass-card rounded-xl hover:border-cyan-500/30 transition text-center"
+          >
+            <div class="text-2xl mb-2">🎨</div>
+            <h4 class="font-semibold">Photopea</h4>
+            <p class="text-xs text-slate-400">Free Photoshop</p>
+          </a>
+          <a
+            href="https://www.canva.com"
+            target="_blank"
+            class="p-4 glass-card rounded-xl hover:border-cyan-500/30 transition text-center"
+          >
+            <div class="text-2xl mb-2">✨</div>
+            <h4 class="font-semibold">Canva</h4>
+            <p class="text-xs text-slate-400">Design anything</p>
+          </a>
+          <a
+            href="https://www.notion.so"
+            target="_blank"
+            class="p-4 glass-card rounded-xl hover:border-cyan-500/30 transition text-center"
+          >
+            <div class="text-2xl mb-2">📝</div>
+            <h4 class="font-semibold">Notion</h4>
+            <p class="text-xs text-slate-400">All-in-one workspace</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section
+      id="faq"
+      class="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-950"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-6"
+          >
+            <svg
+              class="w-4 h-4 text-cyan-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span class="text-cyan-400 text-sm font-medium"
+              >Got Questions?</span
+            >
+          </div>
+          <h2 class="text-4xl md:text-5xl font-outfit font-bold mb-4">
+            Frequently Asked
+            <span
+              class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+              >Questions</span
+            >
+          </h2>
+          <p class="text-slate-400 text-lg">
+            Everything you need to know about LearnerHQ
+          </p>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <div
+            class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition"
+              onclick="toggleFaq(this)"
+            >
+              <span class="font-semibold text-lg pr-4"
+                >What is LearnerHQ and how does it work?</span
+              >
+              <svg
+                class="faq-icon w-5 h-5 text-cyan-400 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-5 hidden">
+              <p class="text-slate-400 leading-relaxed">
+                LearnerHQ is your personal education companion powered by
+                artificial intelligence. It helps students navigate their
+                academic journey by providing personalized guidance, AI-powered
+                study tools, wellness checks, and comprehensive resources.
+                Simply tell us about your goals, and we'll create a customized
+                learning path for you!
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div
+            class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition"
+              onclick="toggleFaq(this)"
+            >
+              <span class="font-semibold text-lg pr-4"
+                >Is LearnerHQ free to use?</span
+              >
+              <svg
+                class="faq-icon w-5 h-5 text-cyan-400 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-5 hidden">
+              <p class="text-slate-400 leading-relaxed">
+                Yes! LearnerHQ is completely free for all students. All our
+                tools including the PC Builder, Study ROI Calculator, AI Notes,
+                Wellness Check, and the EduBot Assistant are available at no
+                cost. We believe quality education guidance should be accessible
+                to everyone.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div
+            class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition"
+              onclick="toggleFaq(this)"
+            >
+              <span class="font-semibold text-lg pr-4"
+                >How does the AI Study Notes feature work?</span
+              >
+              <svg
+                class="faq-icon w-5 h-5 text-cyan-400 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-5 hidden">
+              <p class="text-slate-400 leading-relaxed">
+                Simply upload your PDF study materials, and our AI will analyze
+                the content to generate concise summaries, key points, and even
+                practice quizzes. It's like having a smart study buddy that
+                helps you understand and retain information better!
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div
+            class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition"
+              onclick="toggleFaq(this)"
+            >
+              <span class="font-semibold text-lg pr-4"
+                >What is the Study Abroad ROI Calculator?</span
+              >
+              <svg
+                class="faq-icon w-5 h-5 text-cyan-400 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-5 hidden">
+              <p class="text-slate-400 leading-relaxed">
+                The ROI Calculator helps you make informed decisions about
+                studying abroad. It calculates the investment payback period
+                using live currency rates, comparing tuition costs, living
+                expenses, and potential future earnings. This helps you
+                understand if studying abroad is financially worth it for your
+                specific situation.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div
+            class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition"
+              onclick="toggleFaq(this)"
+            >
+              <span class="font-semibold text-lg pr-4"
+                >How can the Wellness Check help me?</span
+              >
+              <svg
+                class="faq-icon w-5 h-5 text-cyan-400 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-5 hidden">
+              <p class="text-slate-400 leading-relaxed">
+                Student mental health is crucial for academic success. Our
+                Wellness Check is a quick, confidential self-assessment that
+                helps you understand your current mental well-being. Based on
+                your responses, you'll get personalized AI insights, access to
+                top mental health specialists in India, and important helpline
+                resources if needed.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div
+            class="faq-item glass-card rounded-2xl border border-white/10 overflow-hidden"
+          >
+            <button
+              class="faq-question w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition"
+              onclick="toggleFaq(this)"
+            >
+              <span class="font-semibold text-lg pr-4"
+                >Can I use EduBot to ask any education-related question?</span
+              >
+              <svg
+                class="faq-icon w-5 h-5 text-cyan-400 flex-shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer px-6 pb-5 hidden">
+              <p class="text-slate-400 leading-relaxed">
+                Absolutely! EduBot is available on every page and can answer
+                questions about career guidance, course recommendations, study
+                tips, exam preparation, college applications, and much more.
+                Just click the chat icon in the bottom-right corner anytime you
+                need help!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Still have questions? -->
+        <div class="mt-12 text-center">
+          <div
+            class="glass-card rounded-2xl p-8 border border-cyan-500/20 bg-gradient-to-r from-cyan-500/5 to-blue-500/5"
+          >
+            <h3 class="text-xl font-bold mb-2">Still have questions?</h3>
+            <p class="text-slate-400 mb-4">
+              Chat with our AI assistant for instant help!
+            </p>
+            <button
+              onclick="if (window.ChatbotWidget) ChatbotWidget.toggle();"
+              class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition transform hover:scale-105"
+            >
+              💬 Ask EduBot
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/10">
+      <div class="max-w-7xl mx-auto">
+        <!-- Main Footer Content -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8"
+        >
+          <div class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
+            <span class="font-outfit font-bold">LearnerHQ</span>
+          </div>
+          <p class="text-sm text-slate-500">
+            © 2026 LearnerHQ. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Disclaimer Section -->
+        <div class="border-t border-white/10 pt-6">
+          <div
+            class="glass-card rounded-xl p-5 border border-white/10 bg-slate-900/50"
+          >
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 mt-0.5">
+                <svg
+                  class="w-5 h-5 text-cyan-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-sm text-white mb-2">
+                  Platform Disclaimer
+                </h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  <strong class="text-slate-300">LearnerHQ</strong> is a student
+                  guidance platform designed to help learners navigate their
+                  educational journey. We do
+                  <strong class="text-slate-300"
+                    >not promote, endorse, or sell</strong
+                  >
+                  any products or services. Our mission is purely educational —
+                  we curate and provide access to
+                  <strong class="text-slate-300"
+                    >free tools and resources</strong
+                  >
+                  available from various trusted platforms to support student
+                  success. All tools, calculators, and recommendations are for
+                  informational purposes only and should not be considered
+                  professional advice. We encourage users to verify information
+                  independently and consult qualified professionals for specific
+                  guidance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Theme Toggle Functionality
+      function toggleTheme() {
+        const html = document.documentElement;
+        const isLight = html.classList.contains("light-mode");
+
+        if (isLight) {
+          html.classList.remove("light-mode");
+          localStorage.setItem("learnerhq-theme", "dark");
+        } else {
+          html.classList.add("light-mode");
+          localStorage.setItem("learnerhq-theme", "light");
+        }
+      }
+
+      // Load saved theme on page load
+      (function () {
+        const savedTheme = localStorage.getItem("learnerhq-theme");
+        if (savedTheme === "light") {
+          document.documentElement.classList.add("light-mode");
+        }
+      })();
+
+      // =====================
+      // SLIDESHOW FUNCTIONALITY
+      // =====================
+      let currentSlide = 1;
+      const totalSlides = 3;
+      let slideInterval;
+      let progressInterval;
+      const slideDuration = 5000; // 5 seconds per slide
+      const progressUpdateInterval = 50; // Update progress every 50ms
+
+      function showSlide(slideNum) {
+        // Hide all slides
+        document.querySelectorAll(".slide").forEach((slide) => {
+          slide.style.display = "none";
+          slide.classList.remove("active");
+        });
+
+        // Show target slide with animation
+        const targetSlide = document.querySelector(
+          `.slide[data-slide="${slideNum}"]`,
+        );
+        if (targetSlide) {
+          targetSlide.style.display = "block";
+          targetSlide.classList.add("active");
+          // Trigger fade in animation
+          targetSlide.style.opacity = "0";
+          targetSlide.style.transform = "translateX(20px)";
+          setTimeout(() => {
+            targetSlide.style.transition =
+              "opacity 0.5s ease, transform 0.5s ease";
+            targetSlide.style.opacity = "1";
+            targetSlide.style.transform = "translateX(0)";
+          }, 10);
+        }
+
+        // Update dots
+        document.querySelectorAll(".slide-dot").forEach((dot) => {
+          dot.classList.remove("active");
+          dot.style.backgroundColor = "#475569"; // slate-600
+        });
+        const activeDot = document.querySelector(
+          `.slide-dot[data-slide="${slideNum}"]`,
+        );
+        if (activeDot) {
+          activeDot.classList.add("active");
+          // Color based on slide
+          const colors = { 1: "#06b6d4", 2: "#a855f7", 3: "#22c55e" }; // cyan, purple, green
+          activeDot.style.backgroundColor = colors[slideNum];
+        }
+
+        // Update mini step buttons
+        document.querySelectorAll(".step-mini").forEach((step) => {
+          step.style.opacity = "0.6";
+          step.style.transform = "scale(1)";
+        });
+        const activeStep = document.querySelector(
+          `.step-mini[data-step="${slideNum}"]`,
+        );
+        if (activeStep) {
+          activeStep.style.opacity = "1";
+          activeStep.style.transform = "scale(1.05)";
+        }
+
+        currentSlide = slideNum;
+      }
+
+      function goToSlide(slideNum) {
+        showSlide(slideNum);
+        resetAutoPlay();
+      }
+
+      function changeSlide(direction) {
+        let nextSlide = currentSlide + direction;
+        if (nextSlide > totalSlides) nextSlide = 1;
+        if (nextSlide < 1) nextSlide = totalSlides;
+        showSlide(nextSlide);
+        resetAutoPlay();
+      }
+
+      function startProgressBar() {
+        let progress = 0;
+        const progressBar = document.getElementById("slideProgress");
+
+        if (progressInterval) clearInterval(progressInterval);
+
+        progressInterval = setInterval(() => {
+          progress += (progressUpdateInterval / slideDuration) * 100;
+          if (progressBar) {
+            progressBar.style.width = `${Math.min(progress, 100)}%`;
+          }
+          if (progress >= 100) {
+            progress = 0;
+          }
+        }, progressUpdateInterval);
+      }
+
+      function resetAutoPlay() {
+        if (slideInterval) clearInterval(slideInterval);
+        if (progressInterval) clearInterval(progressInterval);
+
+        const progressBar = document.getElementById("slideProgress");
+        if (progressBar) progressBar.style.width = "0%";
+
+        startProgressBar();
+        slideInterval = setInterval(() => {
+          changeSlide(1);
+        }, slideDuration);
+      }
+
+      // Initialize slideshow
+      document.addEventListener("DOMContentLoaded", () => {
+        showSlide(1);
+        resetAutoPlay();
+
+        // Pause on hover
+        const slideshowContainer = document.querySelector(
+          ".slideshow-container",
+        );
+        if (slideshowContainer) {
+          slideshowContainer.addEventListener("mouseenter", () => {
+            if (slideInterval) clearInterval(slideInterval);
+            if (progressInterval) clearInterval(progressInterval);
+          });
+          slideshowContainer.addEventListener("mouseleave", () => {
+            resetAutoPlay();
+          });
+        }
+      });
+
+      // =====================
+      // FAQ ACCORDION FUNCTIONALITY
+      // =====================
+      function toggleFaq(button) {
+        const faqItem = button.parentElement;
+        const answer = faqItem.querySelector(".faq-answer");
+        const icon = button.querySelector(".faq-icon");
+        const isOpen = !answer.classList.contains("hidden");
+
+        // Close all other FAQs
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          const itemAnswer = item.querySelector(".faq-answer");
+          const itemIcon = item.querySelector(".faq-icon");
+          if (item !== faqItem) {
+            itemAnswer.classList.add("hidden");
+            itemIcon.style.transform = "rotate(0deg)";
+            item.classList.remove("faq-open");
+          }
+        });
+
+        // Toggle current FAQ
+        if (isOpen) {
+          answer.classList.add("hidden");
+          icon.style.transform = "rotate(0deg)";
+          faqItem.classList.remove("faq-open");
+        } else {
+          answer.classList.remove("hidden");
+          icon.style.transform = "rotate(180deg)";
+          faqItem.classList.add("faq-open");
+        }
+      }
+    </script>
+
+    <!-- Chatbot Widget -->
+    <script src="js/apiManager.js"></script>
+    <script src="js/chatbot.js"></script>
+  </body>
+</html>

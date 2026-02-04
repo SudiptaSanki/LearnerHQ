@@ -1,0 +1,1859 @@
+/* ============================================
+   LearnerHQ - Custom Styles
+   Glassmorphism Dark Theme with Animations
+   ============================================ */
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+  background-attachment: fixed;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(6, 182, 212, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #06b6d4, #2563eb);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0891b2, #1d4ed8);
+}
+
+/* Form Inputs Enhanced */
+input[type="text"],
+input[type="number"],
+select {
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+}
+
+/* Analyze Button Glow Effect */
+#analyzeBtn {
+  position: relative;
+  overflow: hidden;
+}
+
+#analyzeBtn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+#analyzeBtn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Loading State */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Small loading spinner for inline use */
+.loading-spinner-small {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: #06b6d4;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Compatibility Score Meter */
+.score-meter {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+}
+
+.score-fill.high {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.score-fill.medium {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.score-fill.low {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* Timeline Dots */
+.timeline-item {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2);
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: 5.5px;
+  top: 18px;
+  width: 1px;
+  height: calc(100% + 5px);
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.5), transparent);
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+/* Quiz Question Cards */
+.quiz-question {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-question:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(6, 182, 212, 0.4);
+  transform: translateX(4px);
+}
+
+.quiz-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 16px;
+}
+
+.quiz-answer.show {
+  max-height: 200px;
+  padding: 12px 16px;
+}
+
+/* PPT Slide Preview */
+.ppt-slide {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.8),
+    rgba(15, 23, 42, 0.9)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.ppt-slide:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: scale(1.02);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-success {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.2),
+    rgba(5, 150, 105, 0.2)
+  );
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-warning {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.2),
+    rgba(217, 119, 6, 0.2)
+  );
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.2),
+    rgba(220, 38, 38, 0.2)
+  );
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-info {
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.2),
+    rgba(8, 145, 178, 0.2)
+  );
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+/* Price Tag */
+.price-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.15),
+    rgba(147, 51, 234, 0.15)
+  );
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #c084fc;
+}
+
+/* Shimmer Loading Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.8) 0%,
+    rgba(30, 41, 59, 0.9) 20%,
+    rgba(15, 23, 42, 0.8) 40%,
+    rgba(15, 23, 42, 0.8) 100%
+  );
+  background-size: 2000px 100%;
+}
+
+/* Content Centering Fix */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all main containers are properly centered */
+nav .max-w-7xl,
+section .max-w-7xl,
+main .max-w-7xl,
+footer .max-w-7xl {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100%;
+}
+
+/* Fix navigation centering */
+nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+nav > .max-w-7xl {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* Fix section centering */
+section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+section > .max-w-7xl {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* Fix main content centering */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+main > .max-w-7xl {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* Fix footer centering */
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+footer > .max-w-7xl {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+/* Ensure grid layouts are centered */
+.grid {
+  justify-content: center;
+}
+
+/* Fix hero section centering */
+#hero .max-w-5xl {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Hardware Page Centering Fix - Desktop Only */
+@media (min-width: 1024px) {
+  /* Center the PC Section wrapper */
+  #pcSection {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Center and fix the Laptop Section grid */
+  #laptopSection > .grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Main container on hardware page - ensure centering */
+main.pt-24 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+main.pt-24 > .max-w-7xl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* PC Section parent wrapper - force centering */
+main.pt-24 > .max-w-7xl > .w-full.flex.justify-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Header section centering on hardware page */
+main .text-center.mb-8 {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 2rem auto;
+}
+
+/* Wide screen adjustments */
+@media (min-width: 1400px) {
+  main.pt-24 > .max-w-7xl {
+    max-width: 1400px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  #pcSection {
+    max-width: 1280px;
+  }
+}
+
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
+  .glass-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .timeline-item {
+    padding-left: 25px;
+  }
+}
+
+/* Pulse Animation for Demo Mode */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.7);
+  }
+}
+
+.demo-active {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Success State Checkmark */
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Error State Shake */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.error-shake {
+  animation: shake 0.5s;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #06b6d4, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card Divider */
+.card-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(148, 163, 184, 0.3),
+    transparent
+  );
+  margin: 20px 0;
+}
+
+/* ============================================
+   Slideshow Styles
+   ============================================ */
+
+.slideshow-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.slide.active {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slow pulse animation for step numbers */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 25px 50px -12px currentColor;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 30px 60px -12px currentColor;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Slide dot styles */
+.slide-dot {
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.slide-dot.active {
+  transform: scale(1.3);
+}
+
+/* Step mini cards */
+.step-mini {
+  transition: all 0.3s ease;
+}
+
+.step-mini:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   FAQ Accordion Styles
+   ============================================ */
+
+.faq-item {
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.faq-item.faq-open {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+.faq-question {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
+}
+
+.faq-answer:not(.hidden) {
+  max-height: 500px;
+}
+
+/* Light mode adjustments for FAQ */
+html.light-mode .faq-item:hover {
+  border-color: rgba(234, 88, 12, 0.3);
+}
+
+html.light-mode .faq-item.faq-open {
+  border-color: rgba(234, 88, 12, 0.5);
+  background: rgba(234, 88, 12, 0.05);
+}
+
+html.light-mode .faq-icon {
+  color: #ea580c !important;
+}
+
+/* ============================================
+   Dark/Light Mode Theme Toggle
+   ============================================ */
+
+/* CSS Variables for Theme Colors */
+:root {
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+  --bg-tertiary: #1e293b;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --bg-card-hover: rgba(15, 23, 42, 0.85);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-color: rgba(255, 255, 255, 0.125);
+  --border-hover: rgba(6, 182, 212, 0.3);
+  --accent-cyan: #06b6d4;
+  --accent-blue: #2563eb;
+  --shadow-color: rgba(6, 182, 212, 0.15);
+}
+
+/* Light Mode Theme - Warm Creamy Light Effect */
+html.light-mode {
+  --bg-primary: #fffbf5;
+  --bg-secondary: #fef7ed;
+  --bg-tertiary: #fdf2e3;
+  --bg-card: rgba(255, 253, 250, 0.95);
+  --bg-card-hover: rgba(255, 255, 255, 1);
+  --text-primary: #1a1612;
+  --text-secondary: #5c4d3d;
+  --text-muted: #8b7355;
+  --border-color: rgba(180, 150, 100, 0.2);
+  --border-hover: rgba(234, 88, 12, 0.4);
+  --shadow-color: rgba(180, 140, 80, 0.15);
+  --accent-warm: #ea580c;
+  --accent-gold: #d97706;
+}
+
+html.light-mode body {
+  background: linear-gradient(
+    135deg,
+    #fffdf8 0%,
+    #fef7ed 40%,
+    #fdf2e3 70%,
+    #fbead8 100%
+  ) !important;
+  color: var(--text-primary) !important;
+}
+
+html.light-mode .bg-slate-950,
+html.light-mode .bg-slate-900,
+html.light-mode .bg-slate-900\/80 {
+  background: linear-gradient(180deg, #fffbf5 0%, #fef7ed 100%) !important;
+}
+
+html.light-mode .bg-gradient-to-b,
+html.light-mode .bg-gradient-to-br {
+  background: linear-gradient(135deg, #fffdf8 0%, #fef7ed 100%) !important;
+}
+
+html.light-mode .glass-card {
+  background: rgba(255, 253, 248, 0.9) !important;
+  border-color: rgba(200, 170, 120, 0.25) !important;
+  box-shadow:
+    0 4px 24px rgba(180, 140, 80, 0.12),
+    0 2px 8px rgba(200, 160, 100, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+html.light-mode .glass-card:hover {
+  background: rgba(255, 255, 252, 1) !important;
+  border-color: rgba(234, 88, 12, 0.35) !important;
+  box-shadow:
+    0 8px 32px rgba(180, 140, 80, 0.18),
+    0 4px 12px rgba(234, 88, 12, 0.1);
+}
+
+html.light-mode .text-white {
+  color: #1a1612 !important;
+}
+
+html.light-mode .text-slate-300 {
+  color: #6b5a48 !important;
+}
+
+html.light-mode .text-slate-400 {
+  color: #7a6850 !important;
+}
+
+html.light-mode .text-slate-500 {
+  color: #8b7a65 !important;
+}
+
+html.light-mode nav {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 251, 245, 0.95) 0%,
+    rgba(254, 247, 237, 0.92) 100%
+  ) !important;
+  border-color: rgba(200, 170, 120, 0.2) !important;
+  box-shadow: 0 2px 20px rgba(180, 140, 80, 0.1);
+}
+
+html.light-mode input,
+html.light-mode select,
+html.light-mode textarea {
+  background: rgba(255, 252, 245, 0.9) !important;
+  border-color: rgba(200, 170, 120, 0.3) !important;
+  color: var(--text-primary) !important;
+}
+
+html.light-mode input:focus,
+html.light-mode select:focus,
+html.light-mode textarea:focus {
+  border-color: rgba(234, 88, 12, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+}
+
+html.light-mode .border-white\/10 {
+  border-color: rgba(200, 170, 120, 0.2) !important;
+}
+
+html.light-mode .border-t,
+html.light-mode .border-b {
+  border-color: rgba(200, 170, 120, 0.2) !important;
+}
+
+html.light-mode ::-webkit-scrollbar-track {
+  background: #fef7ed;
+}
+
+html.light-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d97706, #ea580c);
+}
+
+/* Light Mode - Section Backgrounds */
+html.light-mode section {
+  background: transparent !important;
+}
+
+html.light-mode #tools {
+  background: linear-gradient(
+    180deg,
+    rgba(254, 247, 237, 0.5) 0%,
+    rgba(253, 242, 227, 0.6) 100%
+  ) !important;
+}
+
+html.light-mode #resources {
+  background: transparent !important;
+}
+
+/* Light Mode - Footer */
+html.light-mode footer {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(253, 242, 227, 0.4) 100%
+  ) !important;
+  border-color: rgba(200, 170, 120, 0.2) !important;
+}
+
+/* Light Mode - Gradient Text Adjustment */
+html.light-mode .bg-gradient-to-r.from-cyan-400.to-blue-500,
+html.light-mode .bg-gradient-to-r.from-cyan-400.via-blue-500.to-purple-600 {
+  background: linear-gradient(135deg, #ea580c, #d97706, #b45309) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* Light Mode - Buttons */
+html.light-mode .bg-gradient-to-r.from-cyan-500.to-blue-600 {
+  background: linear-gradient(135deg, #ea580c, #d97706) !important;
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+}
+
+html.light-mode .bg-gradient-to-r.from-cyan-500.to-blue-600:hover {
+  box-shadow: 0 6px 25px rgba(234, 88, 12, 0.45);
+}
+
+/* Light Mode - Cards with colored icons */
+html.light-mode .bg-gradient-to-br {
+  filter: saturate(1.1) brightness(1.05);
+}
+
+/* Light Mode - Category Sections (Hardware Page) */
+html.light-mode .category-section {
+  background: rgba(255, 252, 245, 0.8) !important;
+  border-color: rgba(200, 170, 120, 0.2) !important;
+}
+
+/* Light Mode - Component Cards */
+html.light-mode .component-card {
+  background: rgba(255, 253, 248, 0.9) !important;
+  border-color: rgba(200, 170, 120, 0.25) !important;
+}
+
+html.light-mode .component-card:hover,
+html.light-mode .component-card.selected {
+  background: rgba(255, 255, 252, 1) !important;
+  border-color: rgba(234, 88, 12, 0.4) !important;
+}
+
+/* Light Mode - Brand Chips & Spec Items */
+html.light-mode .brand-chip,
+html.light-mode .spec-item {
+  background: rgba(255, 251, 245, 0.9) !important;
+  border-color: rgba(200, 170, 120, 0.25) !important;
+  color: #5c4d3d !important;
+}
+
+html.light-mode .brand-chip:hover,
+html.light-mode .brand-chip.selected,
+html.light-mode .spec-item:hover,
+html.light-mode .spec-item.selected {
+  background: rgba(254, 243, 225, 1) !important;
+  border-color: rgba(234, 88, 12, 0.4) !important;
+  color: #1a1612 !important;
+}
+
+/* Light Mode - Build Summary */
+html.light-mode .build-summary {
+  background: rgba(255, 253, 248, 0.95) !important;
+  border-color: rgba(200, 170, 120, 0.25) !important;
+  box-shadow: 0 4px 24px rgba(180, 140, 80, 0.15);
+}
+
+/* Light Mode - Toggle Switch */
+html.light-mode .toggle-switch {
+  background: rgba(253, 242, 227, 0.9) !important;
+  border-color: rgba(200, 170, 120, 0.3) !important;
+}
+
+/* Light Mode - Disclaimer Banner */
+html.light-mode #disclaimerBanner {
+  background: linear-gradient(
+    135deg,
+    rgba(254, 243, 225, 0.9),
+    rgba(255, 251, 245, 0.95)
+  ) !important;
+  border-color: rgba(217, 119, 6, 0.3) !important;
+}
+
+/* Light Mode - Price Tags */
+html.light-mode .price-tag,
+html.light-mode #totalPrice {
+  color: #b45309 !important;
+}
+
+/* Light Mode - Links */
+html.light-mode a:not([class*="bg-gradient"]) {
+  color: #b45309;
+}
+
+html.light-mode a:hover:not([class*="bg-gradient"]) {
+  color: #ea580c;
+}
+
+/* Light Mode - Learning Journey Slideshow Tags */
+html.light-mode .slide .bg-slate-800,
+html.light-mode .slideshow-container .bg-slate-800 {
+  background: rgba(253, 242, 227, 0.9) !important;
+  border: 1px solid rgba(200, 170, 120, 0.25) !important;
+  color: #5c4d3d !important;
+}
+
+/* General fallback for bg-slate-800 in light mode */
+html.light-mode .bg-slate-800 {
+  background: rgba(253, 242, 227, 0.85) !important;
+  color: #5c4d3d !important;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.4);
+  transform: scale(1.05);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  transition: all 0.4s ease;
+}
+
+.theme-toggle .sun-icon {
+  color: #fbbf24;
+  position: absolute;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle .moon-icon {
+  color: #a78bfa;
+  position: absolute;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+html.light-mode .theme-toggle {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+html.light-mode .theme-toggle:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+html.light-mode .theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+html.light-mode .theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* NEW Tag/Badge Styles */
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  background: linear-gradient(135deg, #ec4899, #f97316);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  margin-left: 8px;
+  animation: pulse-badge 2s ease-in-out infinite;
+  box-shadow: 0 2px 10px rgba(236, 72, 153, 0.4);
+}
+
+@keyframes pulse-badge {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 10px rgba(236, 72, 153, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.6);
+  }
+}
+
+/* ============================================
+   Mobile Responsive Styles for Hardware Page
+   ============================================ */
+
+/* Hardware Page - Mobile Optimizations */
+@media (max-width: 1024px) {
+  .build-summary {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .category-section {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .category-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Toggle Switch Mobile */
+  .toggle-switch {
+    width: 240px !important;
+    height: 44px !important;
+  }
+
+  .toggle-btn {
+    font-size: 0.875rem !important;
+  }
+
+  /* Category Sections Mobile */
+  .category-section {
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .category-title {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Spec Grid Mobile */
+  .spec-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  .spec-item {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Brand Chips Mobile */
+  .brand-chip {
+    padding: 5px 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Component Cards Mobile */
+  .component-card {
+    padding: 12px !important;
+  }
+
+  .component-card .text-2xl {
+    font-size: 1.5rem !important;
+  }
+
+  .component-card .font-medium {
+    font-size: 0.85rem !important;
+  }
+
+  /* Use Case Grid Mobile */
+  #useCaseGrid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Budget Section Mobile */
+  .px-3.py-2.bg-slate-700\/50 {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Retailer Links Mobile */
+  #prebuiltLinks {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  #prebuiltLinks a {
+    padding: 8px 6px !important;
+    font-size: 0.65rem !important;
+  }
+
+  #prebuiltLinks span.text-lg {
+    font-size: 1rem !important;
+  }
+
+  /* Build Summary Mobile */
+  .build-summary {
+    padding: 16px !important;
+    margin-top: 16px;
+  }
+
+  .build-summary h3 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Form Inputs Mobile */
+  #budgetInput {
+    font-size: 1rem !important;
+    padding: 10px 12px !important;
+  }
+
+  #cpuSearch,
+  #cpuGenFilter,
+  #gpuSeriesFilter {
+    font-size: 0.85rem !important;
+    padding: 8px 10px !important;
+  }
+
+  /* Laptop Section Mobile */
+  #laptopSection .glass-card {
+    padding: 16px !important;
+  }
+
+  #laptopSection h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 16px !important;
+  }
+
+  #laptopSection select,
+  #laptopSection input {
+    padding: 10px 12px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Laptop Platforms Mobile */
+  #laptopPlatforms a {
+    padding: 12px !important;
+  }
+
+  #laptopPlatforms h4 {
+    font-size: 0.95rem !important;
+  }
+
+  #laptopPlatforms .text-sm {
+    font-size: 0.75rem !important;
+  }
+
+  /* Navigation Mobile */
+  nav .max-w-7xl {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Page Header Mobile */
+  main > .max-w-7xl > .text-center h1 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  main > .max-w-7xl > .text-center p {
+    font-size: 0.85rem !important;
+  }
+
+  /* Disclaimer Banner Mobile */
+  #disclaimerBanner {
+    padding: 12px !important;
+  }
+
+  #disclaimerBanner h4 {
+    font-size: 0.9rem !important;
+  }
+
+  #disclaimerBanner p {
+    font-size: 0.75rem !important;
+  }
+
+  #disclaimerBanner .text-2xl {
+    font-size: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra Small Screens */
+  .toggle-switch {
+    width: 200px !important;
+    height: 40px !important;
+  }
+
+  .toggle-btn {
+    font-size: 0.75rem !important;
+  }
+
+  #useCaseGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  #prebuiltLinks {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .spec-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  main {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  /* AI Button Mobile */
+  button[onclick="getAIRecommendation()"] {
+    padding: 12px 16px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Price Display Mobile */
+  #totalPrice {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* ============================================
+   Laptop Section - Premium UI Styles
+   ============================================ */
+
+/* Hero Banner Animation */
+.laptop-hero-banner {
+  animation: heroGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  from {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+  }
+  to {
+    box-shadow:
+      0 0 50px rgba(139, 92, 246, 0.2),
+      0 0 80px rgba(236, 72, 153, 0.1);
+  }
+}
+
+/* Card Entrance Animation */
+.laptop-card-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: laptopCardFade 0.5s ease forwards;
+}
+
+@keyframes laptopCardFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Use Case Cards */
+.laptop-use-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.laptop-use-card:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-4px);
+}
+
+.laptop-use-card.selected {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.2),
+    rgba(236, 72, 153, 0.2)
+  );
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);
+}
+
+.laptop-use-icon {
+  font-size: 1.75rem;
+  margin-bottom: 8px;
+}
+
+.laptop-use-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  margin-bottom: 4px;
+}
+
+.laptop-use-desc {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  max-width: 80px;
+}
+
+/* Desktop improvements for laptop use case cards */
+@media (min-width: 1024px) {
+  #laptopUseCaseGrid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    justify-content: flex-start !important;
+  }
+
+  .laptop-use-card {
+    padding: 16px 20px;
+    min-width: 110px;
+    max-width: 130px;
+    flex: 0 0 auto;
+  }
+
+  .laptop-use-desc {
+    font-size: 0.7rem;
+    max-width: 90px;
+    line-height: 1.35;
+  }
+
+  .laptop-use-label {
+    font-size: 0.85rem;
+  }
+
+  .laptop-use-icon {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+  }
+}
+
+/* Currency Buttons - Compact Style */
+.currency-btn {
+  min-width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+}
+
+/* Brand Chips - Enhanced */
+.laptop-brand-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.laptop-brand-chip:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.laptop-brand-chip.selected {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.25),
+    rgba(236, 72, 153, 0.15)
+  );
+  border-color: rgba(139, 92, 246, 0.5);
+  color: #e2e8f0;
+}
+
+/* Brand Color Indicators */
+.brand-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.brand-indicator.all {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+.brand-indicator.hp {
+  background: #0096d6;
+}
+.brand-indicator.dell {
+  background: #007db8;
+}
+.brand-indicator.lenovo {
+  background: #e2231a;
+}
+.brand-indicator.asus {
+  background: #00adef;
+}
+.brand-indicator.acer {
+  background: #83b81a;
+}
+.brand-indicator.msi {
+  background: #ff0000;
+}
+.brand-indicator.apple {
+  background: linear-gradient(135deg, #a8a8a8, #d4d4d4);
+}
+
+/* Display Size Chips */
+.laptop-size-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 65px;
+}
+
+.laptop-size-chip:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.laptop-size-chip.selected {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.2),
+    rgba(6, 182, 212, 0.2)
+  );
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.size-visual {
+  border: 2px solid #64748b;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.laptop-size-chip.selected .size-visual {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+.laptop-size-chip span:last-child {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.laptop-size-chip.selected span:last-child {
+  color: #e2e8f0;
+}
+
+/* Platform Links */
+.laptop-platform-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.laptop-platform-link:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateX(4px);
+}
+
+.platform-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.platform-icon.pricebaba {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+.platform-icon.mobiles91 {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+.platform-icon.smartprix {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+.platform-icon.gadgets360 {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+.platform-icon.versus {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.platform-info {
+  flex: 1;
+}
+
+.platform-info h4 {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  margin-bottom: 2px;
+}
+
+.platform-info p {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.platform-arrow {
+  font-size: 1.25rem;
+  color: #8b5cf6;
+  transition: transform 0.25s ease;
+}
+
+.laptop-platform-link:hover .platform-arrow {
+  transform: translateX(4px);
+}
+
+/* Retailer Chips */
+.retailer-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 8px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.retailer-chip:hover {
+  transform: translateY(-2px);
+  color: #e2e8f0;
+}
+
+.retailer-chip.amazon:hover {
+  border-color: #ff9900;
+  background: rgba(255, 153, 0, 0.1);
+}
+.retailer-chip.flipkart:hover {
+  border-color: #2874f0;
+  background: rgba(40, 116, 240, 0.1);
+}
+.retailer-chip.croma:hover {
+  border-color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+}
+.retailer-chip.reliance:hover {
+  border-color: #e31e24;
+  background: rgba(227, 30, 36, 0.1);
+}
+.retailer-chip.vijay:hover {
+  border-color: #ff5722;
+  background: rgba(255, 87, 34, 0.1);
+}
+.retailer-chip.digital-hub:hover {
+  border-color: #06b6d4;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.15),
+    rgba(59, 130, 246, 0.15)
+  );
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+}
+
+/* Budget Buttons */
+.laptop-budget-btn.active {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.3),
+    rgba(236, 72, 153, 0.2)
+  );
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* Light Mode Overrides for Laptop Section */
+html.light-mode .laptop-use-card {
+  background: rgba(255, 253, 248, 0.9);
+  border-color: rgba(200, 170, 120, 0.2);
+}
+
+html.light-mode .laptop-use-card:hover,
+html.light-mode .laptop-use-card.selected {
+  background: rgba(254, 243, 225, 1);
+  border-color: rgba(234, 88, 12, 0.4);
+}
+
+html.light-mode .laptop-use-label {
+  color: #1a1612;
+}
+
+html.light-mode .laptop-use-desc {
+  color: #5c4d3d;
+}
+
+html.light-mode .laptop-brand-chip {
+  background: rgba(255, 251, 245, 0.9);
+  border-color: rgba(200, 170, 120, 0.25);
+  color: #5c4d3d;
+}
+
+html.light-mode .laptop-brand-chip:hover,
+html.light-mode .laptop-brand-chip.selected {
+  background: rgba(254, 243, 225, 1);
+  border-color: rgba(234, 88, 12, 0.4);
+  color: #1a1612;
+}
+
+html.light-mode .laptop-size-chip {
+  background: rgba(255, 251, 245, 0.9);
+  border-color: rgba(200, 170, 120, 0.2);
+}
+
+html.light-mode .laptop-size-chip:hover,
+html.light-mode .laptop-size-chip.selected {
+  background: rgba(254, 243, 225, 1);
+  border-color: rgba(234, 88, 12, 0.4);
+}
+
+html.light-mode .laptop-platform-link {
+  background: rgba(255, 253, 250, 0.9);
+  border-color: rgba(200, 170, 120, 0.2);
+}
+
+html.light-mode .laptop-platform-link:hover {
+  background: rgba(254, 243, 225, 1);
+  border-color: rgba(234, 88, 12, 0.4);
+}
+
+html.light-mode .platform-info h4 {
+  color: #1a1612;
+}
+
+html.light-mode .platform-info p {
+  color: #7a6850;
+}
+
+html.light-mode .platform-arrow {
+  color: #ea580c;
+}
+
+html.light-mode .retailer-chip {
+  background: rgba(255, 253, 250, 0.9);
+  border-color: rgba(200, 170, 120, 0.2);
+  color: #5c4d3d;
+}
+
+html.light-mode .laptop-hero-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(254, 243, 225, 0.6),
+    rgba(255, 251, 245, 0.7),
+    rgba(254, 243, 225, 0.6)
+  );
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+/* Laptop Section Mobile Responsive */
+@media (max-width: 768px) {
+  .laptop-hero-banner {
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .laptop-hero-banner h2 {
+    font-size: 1.35rem !important;
+  }
+
+  .laptop-hero-banner p {
+    font-size: 0.85rem !important;
+  }
+
+  .laptop-use-card {
+    padding: 12px 8px;
+  }
+
+  .laptop-use-icon {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .laptop-use-label {
+    font-size: 0.75rem;
+  }
+
+  .laptop-use-desc {
+    font-size: 0.55rem;
+  }
+
+  #laptopUseCaseGrid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .laptop-brand-chip {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  .brand-indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .laptop-size-chip {
+    padding: 10px 12px;
+    min-width: 55px;
+  }
+
+  .laptop-platform-link {
+    padding: 10px;
+  }
+
+  .platform-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  .platform-info h4 {
+    font-size: 0.8rem;
+  }
+
+  .platform-info p {
+    font-size: 0.6rem;
+  }
+
+  .retailer-chip {
+    padding: 8px 6px;
+    font-size: 0.6rem;
+  }
+
+  .laptop-budget-btn {
+    padding: 8px 12px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #laptopUseCaseGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .laptop-hero-banner {
+    padding: 16px !important;
+  }
+
+  .laptop-hero-banner h2 {
+    font-size: 1.15rem !important;
+  }
+
+  #displaySizeOptions {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .laptop-size-chip {
+    min-width: auto;
+  }
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Abroad ROI Calculator - LearnerHQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+</head>
+
+<body class="bg-slate-950 text-white font-inter antialiased min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-slate-900/80 backdrop-blur-lg border-b border-white/10 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <span
+                        class="text-xl font-outfit font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">LearnerHQ</span>
+                </a>
+                <a href="../index.html"
+                    class="text-sm text-slate-400 hover:text-white transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Tools
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <div
+                    class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h1
+                    class="text-4xl font-outfit font-bold mb-4 bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+                    Study Abroad ROI Calculator</h1>
+                <p class="text-slate-400 max-w-2xl mx-auto">Calculate your investment payback period with live exchange
+                    rates and get a month-by-month application timeline.</p>
+                <div id="ratesStatus" class="mt-4 text-sm text-cyan-400"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Input Form -->
+                <div class="glass-card p-8 rounded-2xl border border-white/10">
+                    <h2 class="text-xl font-bold mb-6">Your Study Abroad Profile</h2>
+
+                    <form id="roiForm" class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Target Country</label>
+                            <select id="country" required
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition">
+                                <option value="UK">🇬🇧 United Kingdom</option>
+                                <option value="US">🇺🇸 United States</option>
+                                <option value="Canada">🇨🇦 Canada</option>
+                                <option value="Germany">🇩🇪 Germany</option>
+                                <option value="Australia">🇦🇺 Australia</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Field of Study</label>
+                            <input type="text" id="field" placeholder="e.g., Computer Science, MBA" required
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Your Base Currency</label>
+                            <select id="baseCurrency"
+                                class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:ring-2 focus:ring-green-500 outline-none transition">
+                                <option value="INR">🇮🇳 Indian Rupee (₹)</option>
+                                <option value="USD">🇺🇸 US Dollar ($)</option>
+                                <option value="EUR">🇪🇺 Euro (€)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="calculateBtn"
+                            class="w-full px-6 py-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl font-semibold shadow-lg shadow-green-500/50 transition transform hover:scale-[1.02]">
+                            Calculate ROI
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="resultsPanel" class="glass-card p-8 rounded-2xl border border-white/10">
+                    <div id="initialState" class="text-center py-12">
+                        <div
+                            class="w-20 h-20 bg-slate-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-300">Ready to Calculate</h3>
+                        <p class="text-slate-500">Select your target country to see ROI analysis with live exchange
+                            rates.</p>
+                    </div>
+                    <div id="resultsContent" class="hidden"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/currencyApi.js"></script>
+    <script>
+        const countryData = {
+            'UK': { avgTuition: 25000, currency: 'GBP', minWage: 11.44, flag: '🇬🇧' },
+            'US': { avgTuition: 35000, currency: 'USD', minWage: 15, flag: '🇺🇸' },
+            'Canada': { avgTuition: 20000, currency: 'CAD', minWage: 16.50, flag: '🇨🇦' },
+            'Germany': { avgTuition: 3000, currency: 'EUR', minWage: 12, flag: '🇩🇪' },
+            'Australia': { avgTuition: 30000, currency: 'AUD', minWage: 23.23, flag: '🇦🇺' }
+        };
+
+        const timelines = {
+            'UK': ['Sep-Nov: Research universities', 'Dec-Jan: Prepare documents', 'Feb-Mar: Submit applications', 'Apr-May: Interviews', 'Jun-Jul: Visa process', 'Aug: Departure'],
+            'US': ['Sep-Oct: Standardized tests', 'Nov-Dec: Applications', 'Jan-Feb: Wait for decisions', 'Mar-Apr: Financial aid', 'May-Jun: Visa', 'Jul-Aug: Departure'],
+            'Canada': ['Sep-Nov: Research programs', 'Dec-Jan: Applications', 'Feb-Mar: Decisions', 'Apr-May: Study permit', 'Jun-Jul: Accommodation', 'Aug: Departure'],
+            'Germany': ['Oct-Dec: Language prep', 'Jan-Feb: Applications', 'Mar-Apr: Admissions', 'May-Jun: Visa', 'Jul-Aug: Blocked account', 'Sep: Departure'],
+            'Australia': ['Aug-Oct: Research', 'Nov-Dec: Applications', 'Jan-Feb: Offers', 'Mar-Apr: Visa', 'May-Jun: Accommodation', 'Jul: Departure']
+        };
+
+        // Load live rates on page load
+        async function loadRates() {
+            document.getElementById('ratesStatus').textContent = '⏳ Loading live exchange rates...';
+            try {
+                await CurrencyAPI.getLatestRates('USD');
+                document.getElementById('ratesStatus').textContent = '✓ Live exchange rates loaded';
+            } catch (e) {
+                document.getElementById('ratesStatus').textContent = '⚠ Using fallback rates';
+            }
+        }
+        loadRates();
+
+        document.getElementById('roiForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const country = document.getElementById('country').value;
+            const baseCurrency = document.getElementById('baseCurrency').value;
+            const data = countryData[country];
+
+            // Convert tuition to user's currency
+            const tuitionInBase = await CurrencyAPI.convert(data.avgTuition, data.currency, baseCurrency);
+            const monthlyIncome = data.minWage * 20 * 4.33;
+            const monthlyIncomeInBase = await CurrencyAPI.convert(monthlyIncome, data.currency, baseCurrency);
+            const paybackMonths = Math.ceil(data.avgTuition / monthlyIncome);
+
+            document.getElementById('initialState').classList.add('hidden');
+            const content = document.getElementById('resultsContent');
+            content.classList.remove('hidden');
+
+            content.innerHTML = `
+                <h2 class="text-xl font-bold mb-6">${data.flag} ${country} - ROI Analysis</h2>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="p-4 bg-slate-800/50 rounded-lg text-center">
+                        <div class="text-sm text-slate-400 mb-1">Avg. Annual Tuition</div>
+                        <div class="text-2xl font-bold text-green-400">${CurrencyAPI.formatPrice(tuitionInBase, baseCurrency)}</div>
+                        <div class="text-xs text-slate-500">${CurrencyAPI.formatPrice(data.avgTuition, data.currency)} original</div>
+                    </div>
+                    <div class="p-4 bg-slate-800/50 rounded-lg text-center">
+                        <div class="text-sm text-slate-400 mb-1">Monthly Part-time Income</div>
+                        <div class="text-2xl font-bold text-cyan-400">${CurrencyAPI.formatPrice(monthlyIncomeInBase, baseCurrency)}</div>
+                        <div class="text-xs text-slate-500">20 hrs/week @ min wage</div>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-gradient-to-r from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl mb-6 text-center">
+                    <div class="text-sm text-slate-400 mb-2">Investment Payback Period</div>
+                    <div class="text-4xl font-bold text-green-400 mb-1">${(paybackMonths / 12).toFixed(1)} years</div>
+                    <div class="text-sm text-slate-500">(${paybackMonths} months working part-time)</div>
+                </div>
+                
+                <h3 class="font-semibold mb-4">📅 Application Timeline</h3>
+                <div class="space-y-2">
+                    ${timelines[country].map((item, i) => `
+                        <div class="timeline-item" style="animation: slideUp 0.3s ease ${i * 0.1}s both">
+                            <div class="text-sm">${item}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        });
+    </script>
+
+    <!-- Chatbot Widget -->
+    <script src="../js/apiManager.js"></script>
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>
