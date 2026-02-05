@@ -30,7 +30,7 @@
 ## 🔄 How It Works
 
 <p align="center">
-  <img src="Images/workflow.png" alt="LearnerHQ Platform Workflow" width="100%">
+  <img src="LearnerHQ.png" alt="LearnerHQ Platform Workflow" width="100%">
 </p>
 
 ---
